@@ -52,7 +52,7 @@ load_source_files () {
     echo successfully loaded $1
     source $1
   else
-    echo filed to load $1
+    echo failed to load $1
   fi
 }
 
