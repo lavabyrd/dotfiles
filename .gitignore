@@ -1,0 +1,9 @@
+personal/
+config/.config/yarn/
+config/.config/coc/
+config/.config/exercism/
+config/.config/iterm2/
+config/.config/raycast/
+config/.config/gh/hosts.yml
+config/.config/configstore/
+

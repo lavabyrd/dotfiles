@@ -1,0 +1,47 @@
+add_newline = true
+command_timeout = 1500
+
+[directory]
+truncation_length = 0
+truncate_to_repo = false
+truncation_symbol = "…/"
+
+
+# Replace the "❯" symbol in the prompt with "➜"
+[character]                            # The name of the module we are configuring is "character"
+success_symbol = "[❯](bold green)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
+
+[git_branch]
+symbol = " " # 🌱 
+truncation_length = 24
+truncation_symbol = "…"
+# ~/.config/starship.toml
+
+[git_commit]
+tag_symbol = "🔖 "
+only_detached= false
+style = "yellow"
+
+[git_state]
+format = '[\($state( $progress_current of $progress_total)\)]($style) '
+cherry_pick = "[🍒 PICKING](bold red)"
+
+[git_status]
+format = '([$all_status$ahead_behind]($style) )'
+# ahead = "⇡${count}" # or "🏎💨"
+# diverged = "⇕⇡${ahead_count}⇣${behind_count}" # or "😵"
+# behind = "⇣${count}" # or "😰"
+# conflicted = "🏳 "
+up_to_date = '[✓](bold green)'
+# untracked = "🤷 ‍"
+stashed = "📦 "
+# modified = "📝 "
+# staged = '[+\($count\)](green) '
+# renamed = "👅"
+# deleted = "🗑 "
+
+[aws]
+disabled = true
+
+[cmake]
+disabled = true
