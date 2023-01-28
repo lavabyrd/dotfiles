@@ -28,8 +28,9 @@ export PATH=$PATH:$GOPATH/bin # go path
 export PATH="$HOME/.cargo/bin:$PATH" # rust path
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-export NVM_DIR=~/.nvm
 
+# :export XDG_CONFIG_HOME="$HOME/lazygit/.config"
+export XDG_CONFIG_HOME="$HOME/.config"
 # configs
 alias zr="source ~/.zshrc"
 alias zc="nvim ~/.zshrc"

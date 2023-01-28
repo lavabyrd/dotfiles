@@ -11,8 +11,7 @@ local ensure_packer = function()
 end
 local packer_bootstrap = ensure_packer() -- true if packer was just installed
 
--- autocommand that reloads neovim and installs/updates/removes plugins
--- when file is saved
+-- install/update packages on save
 vim.cmd([[
   augroup packer_user_config
     autocmd!
@@ -26,24 +25,21 @@ if not status then
 	return
 end
 
--- add list of plugins to install
+-- packages
 return packer.startup(function(use)
-	-- packer can manage itself
 	use("wbthomason/packer.nvim")
-
-	use("nvim-lua/plenary.nvim") -- lua functions that many plugins use
-
-	use("bluz71/vim-nightfly-guicolors") -- preferred colorscheme
-
+	use("nvim-lua/plenary.nvim")
+	-- theme
+	use("bluz71/vim-nightfly-guicolors")
+	-- window management
 	use("christoomey/vim-tmux-navigator") -- tmux & split window navigation
-
 	use("szw/vim-maximizer") -- maximizes and restores current window
 
 	-- essential plugins
-	use("tpope/vim-surround") -- add, delete, change surroundings (it's awesome)
+	use("tpope/vim-surround") -- switch current pair, eg. cs"' would swap "Hello" to 'Hello'
 	use("vim-scripts/ReplaceWithRegister") -- replace with register contents using motion (gr + motion)
 
-	-- commenting with gc
+	-- commenting/uncommenting
 	use("numToStr/Comment.nvim")
 
 	-- file explorer
