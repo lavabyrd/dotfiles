@@ -30,6 +30,12 @@ dashboard.setup({
 				action = "e ~/.dotfiles/",
 				key = "d",
 			},
+			{
+				desc = "quit",
+				group = "Label",
+				action = "q",
+				key = "q",
+			},
 		},
 		-- footer = {
 		-- 	text = "Who watches the watchmen?",
