@@ -1,8 +1,15 @@
 lastupdatecheck: 0
 recentrepos:
 - /Users/markpreston/.dotfiles
+- /Users/markpreston/code/figment/figment_security
+- /Users/markpreston/code/figment/tf-cloudflare
+- /Users/markpreston/code/personal/tf-cloudflare
 startuppopupversion: 5
 customcommandshistory:
 - q
 - ""
+- exit
+- git push origin org
+- git push org testing
+- git push org testing --force
 hidecommandlog: false
