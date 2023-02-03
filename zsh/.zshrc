@@ -37,6 +37,8 @@ alias zc="nvim ~/.zshrc"
 alias nvc="nvim ~/.config/nvim/init.vim"
 alias tmc="nvim ~/.tmux.conf"
 alias tr="tmux source-file ~/.tmux.conf"
+alias nv="nvim"
+alias n="nvim"
 
 # shortcuts
 alias ls="exa --all --all --long --header --git --icons"

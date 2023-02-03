@@ -11,34 +11,37 @@ dashboard.setup({
 			enable = true,
 		},
 		shortcut = {
-			{ desc = " Update", group = "@property", action = "PackerUpdate", key = "u" },
 			{
-				desc = " Find Files",
+				desc = " Files",
 				group = "Label",
 				action = "Telescope find_files",
 				key = "f",
 			},
 			{
-				desc = " Find String",
+				desc = " String",
 				group = "Label",
 				action = "Telescope live_grep",
-				key = "a",
+				key = "s",
 			},
 			{
-				desc = " dotfiles",
+				desc = " Dotfiles",
 				group = "Number",
 				action = "e ~/.dotfiles/",
 				key = "d",
 			},
 			{
-				desc = "quit",
+				desc = "Explorer",
+				group = "Label",
+				action = "NvimTreeToggle",
+				key = "o",
+			},
+			{ desc = " Update", group = "@property", action = "PackerUpdate", key = "u" },
+			{
+				desc = "  Quit",
 				group = "Label",
 				action = "q",
 				key = "q",
 			},
 		},
-		-- footer = {
-		-- 	text = "Who watches the watchmen?",
-		-- },
 	},
 })
