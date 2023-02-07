@@ -100,6 +100,9 @@ return packer.startup(function(use)
 	-- dashboard
 	use("glepnir/dashboard-nvim")
 
+	-- bufferline
+	use("akinsho/bufferline.nvim")
+
 	if packer_bootstrap then
 		require("packer").sync()
 	end
