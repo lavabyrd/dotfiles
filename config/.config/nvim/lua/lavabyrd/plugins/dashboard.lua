@@ -36,10 +36,10 @@ dashboard.setup({
 				key = "s",
 			},
 			{
-				desc = "🫥 Dotfiles",
+				desc = "🫥 Config",
 				group = "Number",
-				action = "e ~/.dotfiles/",
-				key = "d",
+				action = "e ~/.dotfiles/config/.config/nvim/init.lua",
+				key = "c",
 			},
 			{
 				desc = "🌐 Explorer",
