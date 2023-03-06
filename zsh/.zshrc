@@ -29,7 +29,6 @@ export PATH="$HOME/.cargo/bin:$PATH" # rust path
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 
-# :export XDG_CONFIG_HOME="$HOME/lazygit/.config"
 export XDG_CONFIG_HOME="$HOME/.config"
 # configs
 alias zr="source ~/.zshrc"
@@ -37,18 +36,19 @@ alias zc="nvim ~/.zshrc"
 alias nvc="nvim ~/.config/nvim/init.vim"
 alias tmc="nvim ~/.tmux.conf"
 alias tr="tmux source-file ~/.tmux.conf"
-alias nv="nvim"
-alias n="nvim"
 
 # shortcuts
 alias ls="exa --all --all --long --header --git --icons"
 alias tree="exa --list --header --git --icons"
 alias curl="noglob curl" # stops curl query params from needing to be in ""
-alias vim="nvim"
 alias gundo="git reset HEAD~;" # unstage files and commits
 alias gst="git status"
 alias lg="lazygit"
 alias python="python3.11"
+alias n="nvim"
+alias vim="nvim"
+alias td="tmux detach"
+alias tls="tmux ls"
 
 load_source_files () {
   if [[ -f $1 && -r $1 ]]; then
