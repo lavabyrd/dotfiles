@@ -36,7 +36,7 @@ dashboard.setup({
 				key = "s",
 			},
 			{
-				desc = "🫥 Config",
+				desc = "🫥  Config",
 				group = "Number",
 				action = "e ~/.dotfiles/config/.config/nvim/init.lua",
 				key = "c",
