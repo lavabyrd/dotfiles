@@ -49,6 +49,8 @@ alias n="nvim"
 alias vim="nvim"
 alias td="tmux detach"
 alias tls="tmux ls"
+alias tp="tmux attach -t personal"
+alias tw="tmux attach -t work"
 
 load_source_files () {
   if [[ -f $1 && -r $1 ]]; then

@@ -24,32 +24,37 @@ dashboard.setup({
 		},
 		shortcut = {
 			{
-				desc = "📁 Files",
+				desc = "Files",
 				group = "Label",
 				action = "Telescope find_files",
 				key = "f",
 			},
 			{
-				desc = "⌨️  String",
+				desc = "String",
 				group = "Label",
 				action = "Telescope live_grep",
 				key = "s",
 			},
 			{
-				desc = "🫥  Config",
+				desc = "Config",
 				group = "Number",
 				action = "e ~/.dotfiles/config/.config/nvim/init.lua",
 				key = "c",
 			},
 			{
-				desc = "🌐 Explorer",
+				desc = "Explorer",
 				group = "Label",
 				action = "NvimTreeToggle",
 				key = "o",
 			},
-			{ desc = "☝🏻Update", group = "@property", action = "PackerUpdate", key = "u" },
 			{
-				desc = "  Quit",
+				desc = "Update",
+				group = "@property",
+				action = "PackerUpdate",
+				key = "u",
+			},
+			{
+				desc = "Quit",
 				group = "Label",
 				action = "q",
 				key = "q",

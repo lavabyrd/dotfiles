@@ -50,4 +50,5 @@ null_ls.setup({
 			})
 		end
 	end,
+	autostart = true,
 })
