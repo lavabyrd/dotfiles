@@ -30,6 +30,3 @@ keymap.set("n", "<leader>tl", ":tabs<CR>") -- list current tabs
 keymap.set("n", "<leader>bl", ":buffers<CR>") -- list currently open buffers
 
 keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
-----------------------
--- Plugin Keybinds
-----------------------
