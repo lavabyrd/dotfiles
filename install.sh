@@ -62,6 +62,21 @@ tools=(
     "eza"
     "lazygit"
     "gh"
+    "bitwarden-cli"
+    "coreutils"
+    "fd"
+    "ffmpeg"
+    "fzf"
+    "gemini-cli"
+    "go"
+    "imagemagick"
+    "jq"
+    "kubectx"
+    "neovim"
+    "poppler"
+    "resvg"
+    "ripgrep"
+    "xh"
 )
 
 for tool in "${tools[@]}"; do
@@ -70,6 +85,23 @@ for tool in "${tools[@]}"; do
     else
         print_status "Installing $tool..."
         brew install "$tool"
+    fi
+done
+
+# Install cask applications
+print_status "Installing cask applications..."
+casks=(
+    "font-symbols-only-nerd-font"
+    "orbstack"
+    "podman-desktop"
+)
+
+for cask in "${casks[@]}"; do
+    if brew list --cask "$cask" &>/dev/null; then
+        print_success "$cask already installed"
+    else
+        print_status "Installing $cask..."
+        brew install --cask "$cask"
     fi
 done
 

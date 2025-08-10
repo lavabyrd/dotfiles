@@ -18,6 +18,7 @@ config/.config/nvim/.neoconf.json
 config/.config/fish/fish_variables
 config/.config/fish/completions/*
 config/.config/fish/functions/*
+config/.config/yazi/*.toml-*
 
 # Claude Code sensitive data
 config/.config/.claude/session*
