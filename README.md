@@ -4,9 +4,22 @@ Personal dotfiles for development environment configuration on macOS and Linux. 
 
 ## Setup
 
+### One-Command Install
 ```bash
-cd ~ && git clone https://github.com/yourusername/dotfiles.git
-cd dotfiles && stow config
+curl -sSL https://raw.githubusercontent.com/lavabyrd/dotfiles/main/install.sh | bash
+```
+
+### Manual Install
+```bash
+# Clone and run install script
+git clone https://github.com/lavabyrd/dotfiles.git ~/dotfiles
+cd ~/dotfiles && ./install.sh
+```
+
+### Testing
+```bash
+# Run tests to verify setup
+cd ~/dotfiles && ./test-simple.sh
 ```
 
 ## Configurations
@@ -17,6 +30,8 @@ cd dotfiles && stow config
 - **git**: Global Git configuration and templates
 - **gh**: GitHub CLI configuration
 - **atuin**: Shell history preferences and UI settings
+- **nvim**: LazyVim configuration with plugins and settings
+- **.claude**: Claude Code permissions, environment, and status line settings
 
 ## Tools Integration
 

@@ -1,9 +1,57 @@
+# Sensitive/Personal configs
 personal/
 config/.config/yarn/
 config/.config/coc/
 config/.config/exercism/
 config/.config/iterm2/
 config/.config/raycast/
-config/.config/gh/hosts.yml
 config/.config/configstore/
+
+# Files that may contain secrets/tokens
+config/.config/gh/hosts.yml
+config/.config/git/config
 config/.config/lazygit/state.yml
+
+# Generated/machine-specific files
+config/.config/nvim/lazy-lock.json
+config/.config/nvim/.neoconf.json
+config/.config/fish/fish_variables
+config/.config/fish/completions/*
+config/.config/fish/functions/*
+
+# Claude Code sensitive data
+config/.config/.claude/session*
+config/.config/.claude/auth*
+config/.config/.claude/*.key
+
+# macOS system files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+*.backup
+*.bak
+*.old
+
+# Environment and secrets
+.env*
+*.key
+*.pem
+*.p12
+*.pfx
+
+# Log files
+*.log
+
+# IDE files
+.vscode/
+.idea/
+*.iml
