@@ -1,10 +1,27 @@
 # Dotfiles
 
-This repository contains my personal dotfiles for configuring my development environment on macOS and Linux. The dotfiles include configurations for tmux, starship, lazygit, neovim, and zshrc, as well as local gh config. It uses [Stow](https://www.gnu.org/software/stow/) as a way of linking all dotfiles for my machines
+Personal dotfiles for development environment configuration on macOS and Linux. Uses [GNU Stow](https://www.gnu.org/software/stow/) for portable symlink management.
 
-## Configuration
+## Setup
 
-The dotfiles in this repository include the following configurations:
+```bash
+cd ~ && git clone https://github.com/yourusername/dotfiles.git
+cd dotfiles && stow config
+```
 
-`config/.config/lazygit/config.yml`: Configuration file for the Lazygit terminal-based Git client.
+## Configurations
+
+- **fish**: Shell configuration with aliases, functions, and tool initialization
+- **yazi**: Terminal file manager with vim-like keybindings and zoxide integration
+- **lazygit**: Terminal-based Git client configuration
+- **git**: Global Git configuration and templates
+- **gh**: GitHub CLI configuration
+- **atuin**: Shell history preferences and UI settings
+
+## Tools Integration
+
+- **zoxide**: Smart directory jumping (initialized in fish config)
+- **atuin**: Shell history sync and search
+- **eza**: Modern ls replacement with Git integration
+- **nvim**: LazyVim configuration (separate repo/directory)
 
