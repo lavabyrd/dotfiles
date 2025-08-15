@@ -19,7 +19,7 @@ cd ~/dotfiles && ./install.sh
 ### Testing
 ```bash
 # Run tests to verify setup
-cd ~/dotfiles && ./test-simple.sh
+cd ~/dotfiles && ./test.sh
 ```
 
 ## Configurations
