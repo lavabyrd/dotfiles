@@ -21,6 +21,7 @@ set -gx PATH /usr/local/opt/openssl@1.1/bin $PATH
 set -gx PATH $HOME/.cargo/bin $PATH
 set -gx PATH $PYENV_ROOT/bin $PATH
 set -gx PATH $HOME/.atuin/bin $PATH
+set -gx PATH $HOME/.local/bin $PATH
 set -U fish_user_paths $fish_user_paths "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/"
 
 # Tool Initialization
