@@ -78,3 +78,50 @@ function y
     rm -f -- "$tmp"
 end
 
+function load_api_keys
+    echo "Attempting to load API keys..."
+
+    # Check for 1Password session
+    if type -q op
+        if op account list --format json >/dev/null 2>&1
+            echo "🔑 Found 1Password session. Loading credentials."
+
+            # Correct op read syntax and quote the item name
+            set -gx example_key_1 (op read "op://personal/my api keys/example_key_1")
+
+            echo "1Password credentials loaded."
+            return 0
+        end
+    end
+
+    # Check for Bitwarden session
+    if type -q bw
+        set -l bw_status (bw status | jq -r .status)
+        if test $bw_status = unlocked
+            echo "🔑 Found unlocked Bitwarden session. Syncing vault..."
+        else if test $bw_status = locked
+            echo "🔒 Bitwarden vault is locked. Please unlock it to proceed."
+            bw unlock --raw --check >/dev/null # This prompts you for your master password
+        else
+            echo "🚫 Bitwarden session not found or status is unknown. Please log in first with 'bw login'."
+            return 1
+        end
+
+        # Now that the vault is unlocked, we can sync and load
+        bw sync --quiet
+
+        # Load secrets from the updated vault
+        set -l ITEM_JSON (bw get item "keys")
+        if not set -q ITEM_JSON
+            echo "⚠️ Item 'keys' not found in Bitwarden."
+            return 1
+        end
+
+        set -gx OBSIDIAN_API_KEY (echo $ITEM_JSON | jq -r '.fields[] | select(.name=="obsidian_api_key") | .value')
+        echo "Bitwarden credentials loaded."
+        return 0
+    end
+
+    echo "🚫 No active 1Password or Bitwarden session found. Please log in."
+    return 1
+end
