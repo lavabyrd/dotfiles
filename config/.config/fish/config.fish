@@ -32,6 +32,7 @@ source ~/.orbstack/shell/init2.fish 2>/dev/null || :
 
 # Navigation Aliases
 alias j z
+alias z zi
 alias cdold "builtin cd"
 alias cd z
 
