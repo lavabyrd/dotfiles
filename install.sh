@@ -285,6 +285,28 @@ if [[ "$SETUP_STOW" == true ]]; then
     fi
   fi
   
+  # Setup Claude configuration symlinks
+  if [[ -d "$(pwd)/.claude" ]]; then
+    print_status "Setting up Claude configuration..."
+    mkdir -p "$HOME/.claude"
+    
+    if [[ -f "$(pwd)/.claude/settings.json" ]]; then
+      if ln -sf "$(pwd)/.claude/settings.json" "$HOME/.claude/settings.json"; then
+        print_success "Linked Claude settings"
+      else
+        print_warning "Failed to link Claude settings"
+      fi
+    fi
+  fi
+  
+  if [[ -d "$(pwd)/config/claude/agents" ]]; then
+    if ln -sf "$(pwd)/config/claude/agents" "$HOME/.claude/agents"; then
+      print_success "Linked Claude agents"
+    else
+      print_warning "Failed to link Claude agents"
+    fi
+  fi
+  
   print_success "Configuration symlinks setup complete"
 else
   print_status "Skipping stow configuration"
