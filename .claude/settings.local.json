@@ -4,7 +4,11 @@
       "Bash(./install.sh:*)",
       "Bash(command -v:*)",
       "Bash(fish:*)",
-      "Bash(ln:*)"
+      "Bash(ln:*)",
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "Bash(stow:*)",
+      "Bash(rm:*)"
     ],
     "deny": [],
     "ask": [],
