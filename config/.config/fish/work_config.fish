@@ -26,7 +26,3 @@ end
 function drg
     rg --ignore-case $argv[1] ~/code/work/dockerfiles
 end
-
-# Work-specific Tool Initialization
-status --is-interactive; and pyenv init - | source
-direnv hook fish | source
