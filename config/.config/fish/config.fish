@@ -49,6 +49,7 @@ alias tree "eza --list --header --git --icons"
 alias gundo "git reset HEAD~;"
 alias gst "git status"
 alias gg lazygit
+alias gmp "git checkout main && git pull"
 
 # Editor Aliases
 alias n nvim
@@ -124,4 +125,9 @@ function load_api_keys
 
     echo "🚫 No active 1Password or Bitwarden session found. Please log in."
     return 1
+end
+
+# Load work-specific configuration if it exists
+if test -f ~/.config/fish/work_config.fish
+    source ~/.config/fish/work_config.fish
 end

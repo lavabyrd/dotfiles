@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(./install.sh:*)",
+      "Bash(command -v:*)",
+      "Bash(fish:*)"
+    ],
+    "deny": [],
+    "ask": [],
+    "additionalDirectories": [
+      "/Users/markpreston/.config"
+    ]
+  }
+}
