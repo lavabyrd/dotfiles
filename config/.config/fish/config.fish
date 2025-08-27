@@ -32,19 +32,19 @@ source ~/.orbstack/shell/init2.fish 2>/dev/null || :
 
 # Navigation Aliases
 alias j z
-alias z zi
 alias cdold "builtin cd"
+alias cd z
 
-# Smart cd function that handles relative paths
-function cd
-    # Handle relative paths and special cases with builtin cd
-    if test "$argv[1]" = ".." -o "$argv[1]" = "../.." -o "$argv[1]" = "~" -o (string match -q ".*/" "$argv[1]")
-        builtin cd $argv
-    else
-        # Use zoxide for everything else
-        z $argv
-    end
-end
+# # Smart cd function that handles relative paths
+# function cd
+#     # Handle relative paths and special cases with builtin cd
+#     if test "$argv[1]" = ".." -o "$argv[1]" = "../.." -o "$argv[1]" = "~" -o (string match -q ".*/" "$argv[1]")
+#         builtin cd $argv
+#     else
+#         # Use zoxide for everything else
+#         z $argv
+#     end
+# end
 
 # Config Management Aliases
 alias fr "source ~/.config/fish/config.fish"
