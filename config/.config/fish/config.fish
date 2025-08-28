@@ -35,17 +35,6 @@ alias j z
 alias cdold "builtin cd"
 alias cd z
 
-# # Smart cd function that handles relative paths
-# function cd
-#     # Handle relative paths and special cases with builtin cd
-#     if test "$argv[1]" = ".." -o "$argv[1]" = "../.." -o "$argv[1]" = "~" -o (string match -q ".*/" "$argv[1]")
-#         builtin cd $argv
-#     else
-#         # Use zoxide for everything else
-#         z $argv
-#     end
-# end
-
 # Config Management Aliases
 alias fr "source ~/.config/fish/config.fish"
 alias fc "nvim ~/.config/fish/config.fish"
@@ -99,7 +88,9 @@ function load_api_keys
             echo "🔑 Found 1Password session. Loading credentials."
 
             # Correct op read syntax and quote the item name
-            set -gx example_key_1 (op read "op://personal/my api keys/example_key_1")
+            set -gx JIRA_API_KEY (op read "op://employee/keys/jira_api_key")
+            set -gx OBSIDIAN_API_KEY (op read "op://employee/keys/obsidian_api_key")
+            set -gx STREAQ_SIGNATURE_ID (op read "op://employee/keys/streaq_signature_id")
 
             echo "1Password credentials loaded."
             return 0
