@@ -13,6 +13,8 @@ set -gx HELM_DRIVER configmap
 alias tlgr "tctl get roles --format=json | jq '.[].metadata.name'"
 alias ccd "constable citadel dev stop; constable citadel dev start"
 alias ccl "constable citadel dev logs -f"
+alias v versioneer
+alias vu "versioneer update"
 
 # Work-specific Functions
 function hrg
@@ -26,3 +28,4 @@ end
 function drg
     rg --ignore-case $argv[1] ~/code/work/dockerfiles
 end
+

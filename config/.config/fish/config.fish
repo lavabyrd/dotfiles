@@ -5,6 +5,7 @@ end
 # Environment Variables
 set -gx PYENV_ROOT $HOME/.pyenv
 set -gx XDG_CONFIG_HOME $HOME/.config
+set -gx _ZO_EXCLUDE_DIRS $HOME/code/tickets/*
 set -gx GPG_TTY (tty)
 set -gx GOOGLE_CLOUD_PROJECT semiotic-karma-442617-p4
 set -gx WORKON_HOME $HOME/.virtualenvs
@@ -26,7 +27,6 @@ set -U fish_user_paths $fish_user_paths "/Applications/Visual Studio Code.app/Co
 
 # Tool Initialization
 zoxide init fish | source
-[ -f /opt/homebrew/share/autojump/autojump.fish ]; and source /opt/homebrew/share/autojump/autojump.fish
 eval "$(atuin init fish)"
 source ~/.orbstack/shell/init2.fish 2>/dev/null || :
 
@@ -34,11 +34,11 @@ source ~/.orbstack/shell/init2.fish 2>/dev/null || :
 alias j z
 alias cdold "builtin cd"
 alias cd z
+alias tn ticket-new
 
 # Config Management Aliases
 alias fr "source ~/.config/fish/config.fish"
 alias fc "nvim ~/.config/fish/config.fish"
-alias nc "nvim ~/.config/nvim/init.lua"
 alias tc "nvim ~/.tmux.conf"
 
 # File System Aliases
@@ -51,6 +51,16 @@ alias gst "git status"
 alias gg lazygit
 alias gmp "git checkout main && git pull"
 
+function git
+    /usr/bin/git $argv
+end
+
+# # Disable VCS prompts to fix slowness (temporary until homebrew git is fixed)
+# function fish_vcs_prompt
+#     # Disabled due to slow homebrew git
+#     # To re-enable, remove this function override
+# end
+
 # Editor Aliases
 alias n nvim
 alias vim nvim
@@ -60,10 +70,19 @@ alias cur cursor
 alias kc kubectx
 alias kn kubens
 
+# Teleport
+function tsc
+    tsh ssh teleport-access@$argv[1]
+end
+
+complete -c tsc -f -a "(tsh ls -f names 2>/dev/null)"
+
 # Python Aliases
 alias pip pip3
 alias penv "source ~/.virtualenvs/.venv/bin/activate"
 
+# Misc Aliases
+alias tlint "terraform fmt -recursive"
 # Functions
 function nd
     mkdir -p -- "$argv[1]"
