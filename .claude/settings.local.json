@@ -1,21 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(./install.sh:*)",
-      "Bash(command -v:*)",
-      "Bash(fish:*)",
-      "Bash(ln:*)",
-      "Bash(mkdir:*)",
-      "Bash(cp:*)",
-      "Bash(stow:*)",
-      "Bash(rm:*)"
-    ],
-    "deny": [],
-    "ask": [],
-    "additionalDirectories": [
-      "/Users/markpreston/.config",
-      "/Users/markpreston/.claude",
-      "/Users/markpreston"
+      "Bash(claude plugin enable atlassian@claude-plugins-official claude-code-setup@claude-plugins-official claude-md-management@claude-plugins-official gopls-lsp@claude-plugins-official)",
+      "Bash(claude plugin enable:*)",
+      "Bash(claude plugin enable claude-md-management@claude-plugins-official)",
+      "Bash(claude plugin list:*)"
     ]
   }
 }
