@@ -30,6 +30,9 @@ zoxide init fish | source
 eval "$(atuin init fish)"
 source ~/.orbstack/shell/init2.fish 2>/dev/null || :
 
+# Bitwarden SSH Agent
+set -gx SSH_AUTH_SOCK "$HOME/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock"
+
 # Navigation Aliases
 alias j z
 alias cdold "builtin cd"

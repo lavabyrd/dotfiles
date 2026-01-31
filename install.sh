@@ -143,65 +143,34 @@ else
   print_status "Skipping Homebrew installation"
 fi
 
-# Install required tools
-if [[ "$INSTALL_TOOLS" == true ]]; then
-  print_status "Installing required tools..."
-  tools=(
-    "stow"
-    "fish"
-    "yazi"
-    "zoxide"
-    "atuin"
-    "eza"
-    "lazygit"
-    "gh"
-    "bitwarden-cli"
-    "coreutils"
-    "fd"
-    "ffmpeg"
-    "fzf"
-    "gemini-cli"
-    "go"
-    "imagemagick"
-    "jq"
-    "kubectx"
-    "neovim"
-    "poppler"
-    "resvg"
-    "ripgrep"
-    "xh"
-  )
+# Install tools and casks via Brewfile
+if [[ "$INSTALL_TOOLS" == true || "$INSTALL_CASKS" == true ]]; then
+  SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+  BREWFILE="$SCRIPT_DIR/Brewfile"
 
-  for tool in "${tools[@]}"; do
-    if brew list "$tool" &>/dev/null; then
-      print_success "$tool already installed"
-    else
-      print_status "Installing $tool..."
-      brew install "$tool"
+  if [[ -f "$BREWFILE" ]]; then
+    print_status "Installing packages from Brewfile..."
+
+    # Build brew bundle arguments based on flags
+    BUNDLE_ARGS=""
+    if [[ "$INSTALL_TOOLS" != true ]]; then
+      BUNDLE_ARGS="$BUNDLE_ARGS --no-brew"
     fi
-  done
-else
-  print_status "Skipping tool installation"
-fi
-
-# Install cask applications
-if [[ "$INSTALL_CASKS" == true ]]; then
-  print_status "Installing cask applications..."
-  casks=(
-    "font-symbols-only-nerd-font"
-    "orbstack"
-  )
-
-  for cask in "${casks[@]}"; do
-    if brew list --cask "$cask" &>/dev/null; then
-      print_success "$cask already installed"
-    else
-      print_status "Installing $cask..."
-      brew install --cask "$cask"
+    if [[ "$INSTALL_CASKS" != true ]]; then
+      BUNDLE_ARGS="$BUNDLE_ARGS --no-cask"
     fi
-  done
+
+    if brew bundle --file="$BREWFILE" $BUNDLE_ARGS; then
+      print_success "Brewfile packages installed"
+    else
+      print_warning "Some Brewfile packages may have failed to install"
+    fi
+  else
+    print_error "Brewfile not found at $BREWFILE"
+    exit 1
+  fi
 else
-  print_status "Skipping cask installation"
+  print_status "Skipping tool and cask installation"
 fi
 
 # Setup dotfiles with stow
