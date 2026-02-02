@@ -2,7 +2,7 @@
 description: Bootstrap ticket workspace with Obsidian context and git worktrees
 arguments:
   - name: ticket_id
-    description: Jira ticket ID (e.g., SS2-1234)
+    description: Jira ticket ID (e.g., PROJ-1234)
     required: true
   - name: action
     description: Optional action (done, info, add-repo)
@@ -63,7 +63,7 @@ Check if the ticket context folder exists:
    ```markdown
    ---
    ticket: $ARGUMENTS.ticket_id
-   jira: https://figment.atlassian.net/browse/$ARGUMENTS.ticket_id
+   jira: <URL from jira CLI output or construct from your Jira instance>
    status: in-progress
    repos: []
    created: <today's date YYYY-MM-DD>
