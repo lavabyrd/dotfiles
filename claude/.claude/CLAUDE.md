@@ -12,11 +12,13 @@
 - **Directory Navigation**: Zoxide for smart jumping
 - **Version Control**: Lazygit for terminal-based Git workflows
 - **Shell History**: Atuin for enhanced history management
+- **Jira**: Use local `jira` CLI binary for all ticket operations (configured as mark@figment.io)
 
 ## Working Preferences
 - Focus on portability, security, and readable practices
 - Keep code comments minimal unless particularly complex
 - Never identify as AI in comments, PRs, or commits
+- Never add Co-authored-by trailers for Claude or AI in git commits
 - Use GNU Stow for dotfiles management
 - Prefer editing existing files over creating new ones
 - Test configurations thoroughly before deployment
