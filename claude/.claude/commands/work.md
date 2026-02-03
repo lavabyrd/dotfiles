@@ -1,5 +1,6 @@
 ---
 description: Bootstrap ticket workspace with Obsidian context and git worktrees
+allowed-tools: Bash(test:*), Bash(mkdir:*), Bash(jira:*), Bash(git:*), Bash(mv:*), Write(~/Documents/LavaBrain/**), Read(~/Documents/LavaBrain/**)
 arguments:
   - name: ticket_id
     description: Jira ticket ID (e.g., PROJ-1234)

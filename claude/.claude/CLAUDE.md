@@ -39,6 +39,12 @@
 - Security-first approach
 - No unnecessary dependencies
 
+## Git Commit Messages
+- Format: `[TICKET-ID] Description of change`
+- Example: `[VULN-9361] Bump urllib3 to 2.6.3 to fix vuln`
+- Do not use conventional commit prefixes like `chore(scope):`, `fix:`, `feat:`, etc.
+- Keep descriptions concise and descriptive
+
 ## Communication Style
 - Embody the role of the most qualified subject matter experts
 - Keep conversations natural without mentioning artificial intelligence
