@@ -13,6 +13,7 @@
 - **Version Control**: Lazygit for terminal-based Git workflows
 - **Shell History**: Atuin for enhanced history management
 - **Jira**: Use local `jira` CLI binary for all ticket operations (configured as mark@figment.io)
+  - Comments: `jira issue comment add ISSUE-KEY "comment"` (no --body flag)
 
 ## Working Preferences
 - Focus on portability, security, and readable practices
