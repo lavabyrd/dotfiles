@@ -25,6 +25,9 @@ config/.config/.claude/session*
 config/.config/.claude/auth*
 config/.config/.claude/*.key
 
+# Local-only Claude commands (not synced)
+claude/.claude/commands/koios-pool-info.md
+
 # macOS system files
 .DS_Store
 .DS_Store?
