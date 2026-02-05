@@ -38,6 +38,14 @@ urls:
 - Tags are lowercase
 - Hubs match existing hub names exactly
 
+### Codebase Documentation Frontmatter
+For `document` action, include additional fields:
+```yaml
+scanned_at: <short-sha>    # git rev-parse --short HEAD
+scanned_path: <repo-path>  # Original path scanned
+```
+This enables "what changed since last scan" queries by comparing git history.
+
 ### Destination
 All content goes to: `~/Documents/LavaBrain/01-Inbox/`
 
@@ -213,3 +221,12 @@ Added to vault: 01-Inbox/2026-02-04_<filename>.md
 Hubs: [Hub1, Hub2]
 Tags: [tag1, tag2]
 ```
+
+## Rescanning Codebases
+
+When user asks "what changed since last scan" for a previously documented repo:
+
+1. Read the existing doc to get `scanned_at` SHA and `scanned_path`
+2. Run `git log <scanned_at>..HEAD --oneline` to see commits since
+3. Summarize significant changes
+4. Offer to update the doc with new SHA and any architectural changes
