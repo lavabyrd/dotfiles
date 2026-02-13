@@ -23,7 +23,8 @@
     "claude-code-setup@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true,
-    "superpowers@claude-plugins-official": true
+    "superpowers@claude-plugins-official": true,
+    "mermaid-diagrams@sg2-ai-marketplace": true
   },
   "feedbackSurveyState": {
     "lastShownTime": 1754066227391

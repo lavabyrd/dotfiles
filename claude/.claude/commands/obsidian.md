@@ -72,11 +72,16 @@ Always include `Development` hub for technical content.
 Analyze a codebase and create an architecture overview.
 
 **Process:**
-1. Read README if present
-2. List directory structure (`ls -la`, check key dirs)
-3. Identify tech stack from package files (go.mod, package.json, Cargo.toml, etc.)
-4. Check git history for context (`git log --oneline -10`)
-5. Identify main components and entry points
+1. Ensure the repo is on latest main before scanning:
+   - Run `git status` to check for uncommitted changes or if not on main
+   - If there are local changes or the branch is not main, **warn the user and stop**. Do not discard changes.
+   - If clean and on main (or can switch), run `git fetch origin main && git reset --hard origin/main` to get latest
+   - If clean but on a different branch, ask the user before switching
+2. Read README if present
+3. List directory structure (`ls -la`, check key dirs)
+4. Identify tech stack from package files (go.mod, package.json, Cargo.toml, etc.)
+5. Check git history for context (`git log --oneline -10`)
+6. Identify main components and entry points
 
 **Output structure:**
 ```markdown
