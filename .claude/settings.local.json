@@ -4,7 +4,11 @@
       "Bash(claude plugin enable atlassian@claude-plugins-official claude-code-setup@claude-plugins-official claude-md-management@claude-plugins-official gopls-lsp@claude-plugins-official)",
       "Bash(claude plugin enable:*)",
       "Bash(claude plugin enable claude-md-management@claude-plugins-official)",
-      "Bash(claude plugin list:*)"
+      "Bash(claude plugin list:*)",
+      "Bash(du:*)",
+      "Bash(git -C /Users/markpreston/dotfiles log --oneline)",
+      "Bash(ln:*)",
+      "Bash(bash test.sh:*)"
     ]
   }
 }

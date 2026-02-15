@@ -6,7 +6,7 @@ FAILED=0
 
 # Test symlinks
 echo "Checking symlinks..."
-configs=("fish" "yazi" "lazygit" "git" "gh" "atuin" "nvim" ".claude")
+configs=("fish" "yazi" "lazygit" "git" "gh" "atuin" "nvim")
 
 for config in "${configs[@]}"; do
     if [[ -L "$HOME/.config/$config" ]]; then
@@ -14,6 +14,20 @@ for config in "${configs[@]}"; do
         echo "✅ $config -> $target"
     else
         echo "❌ $config is not symlinked"
+        ((FAILED++))
+    fi
+done
+
+# Test Claude configuration symlinks
+echo -e "\nChecking Claude configuration..."
+claude_items=("settings.json" "CLAUDE.md" "commands" "agents")
+
+for item in "${claude_items[@]}"; do
+    if [[ -L "$HOME/.claude/$item" ]]; then
+        target=$(readlink "$HOME/.claude/$item")
+        echo "✅ .claude/$item -> $target"
+    else
+        echo "❌ .claude/$item is not symlinked"
         ((FAILED++))
     fi
 done

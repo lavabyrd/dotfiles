@@ -24,6 +24,7 @@ brew "kubectx"        # Kubernetes context switcher
 brew "gemini-cli"     # Gemini AI CLI
 
 # Cask Applications
+cask "font-jetbrains-mono"          # JetBrains Mono coding font
 cask "font-symbols-only-nerd-font"  # Nerd Font symbols
 cask "orbstack"                      # Docker/Linux on macOS
 cask "ghostty"                       # GPU-accelerated terminal

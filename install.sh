@@ -255,25 +255,20 @@ if [[ "$SETUP_STOW" == true ]]; then
   fi
   
   # Setup Claude configuration symlinks
-  if [[ -d "$(pwd)/.claude" ]]; then
+  CLAUDE_SRC="$(pwd)/claude/.claude"
+  if [[ -d "$CLAUDE_SRC" ]]; then
     print_status "Setting up Claude configuration..."
     mkdir -p "$HOME/.claude"
-    
-    if [[ -f "$(pwd)/.claude/settings.json" ]]; then
-      if ln -sf "$(pwd)/.claude/settings.json" "$HOME/.claude/settings.json"; then
-        print_success "Linked Claude settings"
-      else
-        print_warning "Failed to link Claude settings"
+
+    for item in settings.json CLAUDE.md commands agents; do
+      if [[ -e "$CLAUDE_SRC/$item" ]]; then
+        if ln -sf "$CLAUDE_SRC/$item" "$HOME/.claude/$item"; then
+          print_success "Linked Claude $item"
+        else
+          print_warning "Failed to link Claude $item"
+        fi
       fi
-    fi
-  fi
-  
-  if [[ -d "$(pwd)/config/claude/agents" ]]; then
-    if ln -sf "$(pwd)/config/claude/agents" "$HOME/.claude/agents"; then
-      print_success "Linked Claude agents"
-    else
-      print_warning "Failed to link Claude agents"
-    fi
+    done
   fi
   
   print_success "Configuration symlinks setup complete"
