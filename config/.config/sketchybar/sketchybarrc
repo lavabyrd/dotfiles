@@ -31,10 +31,13 @@ sketchybar --default \
     background.corner_radius=4 \
     background.height=22
 
+############## EVENTS ##############
+sketchybar --add event aerospace_workspace_change
+
 ############## ITEMS ##############
 
 # Workspace indicators
-for ws in 1 2 3 4 5 6 7; do
+for ws in 1 2 3 4 5 6; do
     sketchybar --add item "space.$ws" left \
         --set "space.$ws" \
             label="$ws" \
@@ -42,6 +45,7 @@ for ws in 1 2 3 4 5 6 7; do
             label.color="$OVERLAY_COLOR" \
             padding_left=4 \
             padding_right=4 \
+            update_freq=10 \
             click_script="aerospace workspace $ws" \
             script="$PLUGIN_DIR/aerospace.sh" \
         --subscribe "space.$ws" aerospace_workspace_change
