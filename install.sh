@@ -283,6 +283,11 @@ if command -v sketchybar &>/dev/null; then
   print_success "sketchybar service started"
 fi
 
+# Open AeroSpace if installed (requires Accessibility permission on first run)
+if [ -d "/Applications/AeroSpace.app" ]; then
+  print_status "AeroSpace installed — open it manually to grant Accessibility permission on first run"
+fi
+
 # Optional: Set fish as default shell (only if tools were installed)
 if [[ "$INSTALL_TOOLS" == true ]] && command -v fish &>/dev/null; then
   echo
