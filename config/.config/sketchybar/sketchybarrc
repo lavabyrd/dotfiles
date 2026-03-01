@@ -33,6 +33,20 @@ sketchybar --default \
 
 ############## ITEMS ##############
 
+# Workspace indicators
+for ws in 1 2 3 4 5 6 7; do
+    sketchybar --add item "space.$ws" left \
+        --set "space.$ws" \
+            label="$ws" \
+            label.font="JetBrains Mono:Bold:12.0" \
+            label.color="$OVERLAY_COLOR" \
+            padding_left=4 \
+            padding_right=4 \
+            click_script="aerospace workspace $ws" \
+            script="$PLUGIN_DIR/aerospace.sh" \
+        --subscribe "space.$ws" aerospace_workspace_change
+done
+
 # Discord badge (left)
 sketchybar --add item discord left \
     --set discord \
