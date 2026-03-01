@@ -73,28 +73,6 @@ sketchybar --add item telegram left \
         script="$PLUGIN_DIR/telegram.sh" \
     --subscribe telegram system_woke
 
-# Ghostty badge (left)
-sketchybar --add item ghostty left \
-    --set ghostty \
-        drawing=off \
-        icon="$ICON_GHOSTTY" \
-        icon.color="$YELLOW" \
-        label.color="$YELLOW" \
-        update_freq=5 \
-        script="$PLUGIN_DIR/ghostty.sh" \
-    --subscribe ghostty system_woke
-
-# iTerm2 badge (left)
-sketchybar --add item iterm left \
-    --set iterm \
-        drawing=off \
-        icon="$ICON_ITERM" \
-        icon.color="$YELLOW" \
-        label.color="$YELLOW" \
-        update_freq=5 \
-        script="$PLUGIN_DIR/iterm.sh" \
-    --subscribe iterm system_woke
-
 # Spotify (left)
 sketchybar --add item spotify left \
     --set spotify \
