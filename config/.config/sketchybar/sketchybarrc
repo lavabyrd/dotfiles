@@ -7,7 +7,7 @@ PLUGIN_DIR="$CONFIG_DIR/plugins"
 
 ############## BAR ##############
 sketchybar --bar \
-    height=32 \
+    height=44 \
     position=top \
     sticky=on \
     padding_left=12 \
@@ -43,6 +43,17 @@ sketchybar --add item discord left \
         update_freq=5 \
         script="$PLUGIN_DIR/discord.sh" \
     --subscribe discord system_woke
+
+# Telegram badge (left)
+sketchybar --add item telegram left \
+    --set telegram \
+        drawing=off \
+        icon="$ICON_TELEGRAM" \
+        icon.color="$BLUE" \
+        label.color="$BLUE" \
+        update_freq=5 \
+        script="$PLUGIN_DIR/telegram.sh" \
+    --subscribe telegram system_woke
 
 # Spotify (left)
 sketchybar --add item spotify left \
