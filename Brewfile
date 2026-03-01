@@ -22,6 +22,7 @@ brew "resvg"          # SVG rendering
 brew "poppler"        # PDF rendering library
 brew "kubectx"        # Kubernetes context switcher
 brew "gemini-cli"     # Gemini AI CLI
+brew "sketchybar"        # Custom macOS menu bar
 
 # Cask Applications
 cask "font-jetbrains-mono"          # JetBrains Mono coding font
