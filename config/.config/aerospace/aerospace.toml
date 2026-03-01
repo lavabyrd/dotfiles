@@ -1,6 +1,9 @@
 after-login-command = []
 after-startup-command = []
 
+exec-on-workspace-change = ['/bin/sh', '-c',
+    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE']
+
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 
@@ -45,9 +48,6 @@ alt-shift-5 = 'move-node-to-workspace 5'
 alt-shift-6 = 'move-node-to-workspace 6'
 alt-shift-7 = 'move-node-to-workspace 7'
 
-exec-on-workspace-change = ['/bin/sh', '-c',
-    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE']
-
 # Arc
 [[on-window-detected]]
 if.app-id = 'company.thebrowser.Browser'
@@ -78,10 +78,10 @@ run = 'move-node-to-workspace 5'
 if.app-id = 'com.tinyspeck.slackmacgap'
 run = 'move-node-to-workspace 6'
 
-# iTerm2 (other machine)
+# iTerm2 (other machine, shares workspace with Ghostty)
 [[on-window-detected]]
 if.app-id = 'com.googlecode.iterm2'
-run = 'move-node-to-workspace 7'
+run = 'move-node-to-workspace 2'
 
 # Floating: Claude Desktop
 [[on-window-detected]]
