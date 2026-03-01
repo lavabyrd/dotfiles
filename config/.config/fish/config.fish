@@ -84,6 +84,12 @@ complete -c tsc -f -a "(tsh ls -f names 2>/dev/null)"
 alias pip pip3
 alias penv "source ~/.virtualenvs/.venv/bin/activate"
 
+# Brew Aliases
+alias bi "brew install"
+alias bic "brew install --cask"
+alias bu "brew bundle --file=~/dotfiles/Brewfile"
+alias borphans "brew bundle cleanup --file=~/dotfiles/Brewfile"
+
 # Misc Aliases
 alias tlint "terraform fmt -recursive"
 # Functions

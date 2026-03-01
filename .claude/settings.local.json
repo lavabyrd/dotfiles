@@ -8,7 +8,9 @@
       "Bash(du:*)",
       "Bash(git -C /Users/markpreston/dotfiles log --oneline)",
       "Bash(ln:*)",
-      "Bash(bash test.sh:*)"
+      "Bash(bash test.sh:*)",
+      "Bash(git:*)",
+      "Bash(git add:*)"
     ]
   }
 }

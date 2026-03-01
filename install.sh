@@ -276,6 +276,13 @@ else
   print_status "Skipping stow configuration"
 fi
 
+# Start sketchybar if installed
+if command -v sketchybar &>/dev/null; then
+  print_status "Starting sketchybar..."
+  brew services start sketchybar 2>/dev/null || true
+  print_success "sketchybar service started"
+fi
+
 # Optional: Set fish as default shell (only if tools were installed)
 if [[ "$INSTALL_TOOLS" == true ]] && command -v fish &>/dev/null; then
   echo

@@ -1,0 +1,77 @@
+#!/bin/sh
+# shellcheck disable=SC1091
+. "$CONFIG_DIR/colors.sh"
+. "$CONFIG_DIR/icons.sh"
+
+PLUGIN_DIR="$CONFIG_DIR/plugins"
+
+############## BAR ##############
+sketchybar --bar \
+    height=32 \
+    position=top \
+    sticky=on \
+    padding_left=12 \
+    padding_right=12 \
+    color="$BAR_COLOR" \
+    border_width=1 \
+    border_color="$BAR_BORDER_COLOR" \
+    notch_width=200 \
+    display=all \
+    topmost=window
+
+############## DEFAULTS ##############
+sketchybar --default \
+    padding_left=6 \
+    padding_right=6 \
+    icon.font="Symbols Nerd Font Mono:Regular:14.0" \
+    icon.color="$ICON_COLOR" \
+    label.font="JetBrains Mono:Regular:13.0" \
+    label.color="$LABEL_COLOR" \
+    icon.padding_right=4 \
+    background.corner_radius=4 \
+    background.height=22
+
+############## ITEMS ##############
+
+# Discord badge (left)
+sketchybar --add item discord left \
+    --set discord \
+        drawing=off \
+        icon="$ICON_DISCORD" \
+        icon.color="$RED" \
+        label.color="$RED" \
+        update_freq=5 \
+        script="$PLUGIN_DIR/discord.sh" \
+    --subscribe discord system_woke
+
+# Spotify (left)
+sketchybar --add item spotify left \
+    --set spotify \
+        drawing=off \
+        icon="$ICON_SPOTIFY" \
+        icon.color="$GREEN" \
+        update_freq=5 \
+        script="$PLUGIN_DIR/spotify.sh"
+
+# Battery (right)
+sketchybar --add item battery right \
+    --set battery \
+        update_freq=60 \
+        script="$PLUGIN_DIR/battery.sh"
+
+# Date (right)
+sketchybar --add item date right \
+    --set date \
+        icon="$ICON_CALENDAR" \
+        update_freq=60 \
+        script="$PLUGIN_DIR/time.sh"
+
+# Clock (right)
+sketchybar --add item clock right \
+    --set clock \
+        icon="$ICON_CLOCK" \
+        update_freq=10 \
+        script="$PLUGIN_DIR/time.sh"
+
+############## FINALISE ##############
+sketchybar --update
