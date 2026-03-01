@@ -1,0 +1,12 @@
+#!/bin/sh
+# Catppuccin Mocha
+BAR_COLOR=0xff1e1e2e
+BAR_BORDER_COLOR=0xff313244
+ICON_COLOR=0xffcdd6f4
+LABEL_COLOR=0xffcdd6f4
+OVERLAY_COLOR=0xff6c7086
+ACCENT_COLOR=0xffcba6f7
+RED=0xfff38ba8
+GREEN=0xffa6e3a1
+YELLOW=0xfff9e2af
+BLUE=0xff89b4fa
