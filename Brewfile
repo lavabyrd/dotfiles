@@ -1,3 +1,5 @@
+tap "nikitabobko/tap"
+
 # CLI Tools
 brew "stow"           # Symlink farm manager for dotfiles
 brew "fish"           # Friendly interactive shell
@@ -27,5 +29,6 @@ brew "sketchybar"        # Custom macOS menu bar
 # Cask Applications
 cask "font-jetbrains-mono"          # JetBrains Mono coding font
 cask "font-symbols-only-nerd-font"  # Nerd Font symbols
+cask "aerospace"             # Tiling window manager
 cask "orbstack"                      # Docker/Linux on macOS
 cask "ghostty"                       # GPU-accelerated terminal
