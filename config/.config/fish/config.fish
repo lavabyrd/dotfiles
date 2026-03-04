@@ -47,6 +47,7 @@ alias tc "nvim ~/.tmux.conf"
 # File System Aliases
 alias ls "eza --all --all --long --header --git --icons"
 alias tree "eza --list --header --git --icons"
+alias o obsidian
 
 # Git Aliases
 alias gundo "git reset HEAD~;"

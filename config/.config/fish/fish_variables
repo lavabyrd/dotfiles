@@ -1,4 +1,4 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR __fish_initialized:4300
-SETUVAR fish_user_paths:/Applications/Visual\x20Studio\x20Code\x2eapp/Contents/Resources/app/bin/
+SETUVAR fish_user_paths:/Applications/Obsidian\x2eapp/Contents/MacOS\x1e/Applications/Visual\x20Studio\x20Code\x2eapp/Contents/Resources/app/bin/
