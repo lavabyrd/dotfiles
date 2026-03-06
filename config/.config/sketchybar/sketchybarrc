@@ -62,6 +62,17 @@ sketchybar --add item discord left \
         script="$PLUGIN_DIR/discord.sh" \
     --subscribe discord system_woke
 
+# Slack badge (left)
+sketchybar --add item slack left \
+    --set slack \
+        drawing=off \
+        icon="$ICON_SLACK" \
+        icon.color="$ACCENT_COLOR" \
+        label.color="$ACCENT_COLOR" \
+        update_freq=5 \
+        script="$PLUGIN_DIR/slack.sh" \
+    --subscribe slack system_woke
+
 # Telegram badge (left)
 sketchybar --add item telegram left \
     --set telegram \
