@@ -12,6 +12,9 @@ config/.config/gh/hosts.yml
 config/.config/git/config
 config/.config/lazygit/state.yml
 
+# Tmux plugins (installed via TPM, not committed)
+config/.config/tmux/plugins/
+
 # Generated/machine-specific files
 config/.config/nvim/lazy-lock.json
 config/.config/nvim/.neoconf.json

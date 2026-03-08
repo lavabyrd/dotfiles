@@ -42,7 +42,10 @@ alias tn ticket-new
 # Config Management Aliases
 alias fr "source ~/.config/fish/config.fish"
 alias fc "nvim ~/.config/fish/config.fish"
-alias tc "nvim ~/.tmux.conf"
+alias tc "nvim ~/.config/tmux/tmux.conf"
+alias tr "source ~/.config/tmux/tmux.conf"
+alias ar "aerospace reload-config"
+alias ac "nvim ~/.config/aerospace/aerospace.toml"
 
 # File System Aliases
 alias ls "eza --all --all --long --header --git --icons"
