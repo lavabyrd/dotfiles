@@ -43,7 +43,7 @@ alias tn ticket-new
 alias fr "source ~/.config/fish/config.fish"
 alias fc "nvim ~/.config/fish/config.fish"
 alias tc "nvim ~/.config/tmux/tmux.conf"
-alias tr "source ~/.config/tmux/tmux.conf"
+alias tr "tmux source-file ~/.config/tmux/tmux.conf"
 alias ar "aerospace reload-config"
 alias ac "nvim ~/.config/aerospace/aerospace.toml"
 
