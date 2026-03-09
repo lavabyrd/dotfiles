@@ -10,7 +10,10 @@
       "Bash(ln:*)",
       "Bash(bash test.sh:*)",
       "Bash(git:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(brew services:*)",
+      "Bash(brew:*)",
+      "Bash(tmux:*)"
     ]
   }
 }
