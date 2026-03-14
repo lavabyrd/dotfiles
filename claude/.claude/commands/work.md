@@ -71,7 +71,6 @@ test -d ~/Documents/LavaBrain/02-Projects/Work/Tickets/$ARGUMENTS.ticket_id && e
 If user says "done" or "mark complete":
 - Update `_context.md` status to `completed`
 - Remind about `ticket clean $ARGUMENTS.ticket_id` for worktree cleanup
-- Move Obsidian folder to `05-Archive/Work/Tickets/$ARGUMENTS.ticket_id/`
 
 If user says "add repo":
 - Ask which repo
@@ -80,7 +79,7 @@ If user says "add repo":
 
 ## Rules
 
-1. **Archive, never delete** - completed tickets go to `05-Archive/Work/Tickets/`
+1. **Never move or archive** - completed ticket folders stay in `02-Projects/Work/Tickets/` permanently
 2. **No AI co-author** - never add Co-authored-by trailers for Claude
 3. **Branch convention**: `mp/<ticket-lowercase>/<description>`
 4. **Always fetch** before creating worktrees
