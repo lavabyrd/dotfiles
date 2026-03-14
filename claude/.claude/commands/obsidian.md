@@ -1,17 +1,22 @@
 ---
 description: Add content to Obsidian vault with proper PARA categorization and hub linking. Use for documenting codebases, saving commands, capturing concepts, or preserving useful knowledge from conversations.
-allowed-tools: Read, Glob, Write(~/Documents/LavaBrain/**), Bash(git:*), Bash(ls:*)
+allowed-tools: Read, Glob, Write(~/Documents/LavaBrain/**), Edit(~/Documents/LavaBrain/**), Bash(git:*), Bash(ls:*), Bash(/Applications/Obsidian.app/Contents/MacOS/obsidian:*)
 arguments:
   - name: action
-    description: "Action to perform: document <path>, add <content>, command <cmd>, procedure <title>. If omitted, asks what to add."
+    description: "Action to perform: document <path>, add <content>, command <cmd>, procedure <title>, update <note-name>, research <topic>. If omitted, asks what to add."
     required: false
 ---
 
 # Obsidian Vault Skill
 
-## Overview
+## CLI
 
-Add content to the LavaBrain Obsidian vault with proper formatting, hub linking, and PARA-compliant organization. All content lands in `01-Inbox/` for later organization.
+All vault interactions use the Obsidian CLI:
+```
+/Applications/Obsidian.app/Contents/MacOS/obsidian <command> vault=LavaBrain
+```
+
+For file creation: write content with the Write tool first, then open with the CLI. This avoids content escaping issues for large notes.
 
 ## File Conventions
 
@@ -41,30 +46,29 @@ urls:
 ### Codebase Documentation Frontmatter
 For `document` action, include additional fields:
 ```yaml
-scanned_at: <short-sha>    # git rev-parse --short HEAD
-scanned_path: <repo-path>  # Original path scanned
+scanned_at: <short-sha>
+scanned_path: <repo-path>
 ```
 This enables "what changed since last scan" queries by comparing git history.
 
 ### Destination
-All content goes to: `~/Documents/LavaBrain/01-Inbox/`
+All new content goes to: `~/Documents/LavaBrain/01-Inbox/`
 
 ## Hub Auto-Detection
 
-Read existing hubs from `~/Documents/LavaBrain/04-Resources/Hubs/` and match content to relevant ones.
+Read the live hub list before creating any note:
+```bash
+ls ~/Documents/LavaBrain/04-Resources/Hubs/
+```
+Match content to relevant hub names from what's actually there. Always include `Development` for technical content.
 
-**Hub matching rules:**
-- Go/Golang code -> `Golang`
-- Kubernetes/K8s/kubectl -> `Kubernetes`
-- Ethereum/ETH/validators -> `Ethereum-Network` or `Ethereum`
-- Git commands/workflows -> `Git`
-- Fish/Bash/ZSH shell -> respective shell hub
-- Cardano/ADA -> `Blockchain`
-- Cosmos SDK chains -> `Cosmos-Ecosystem`
-- Claude/AI workflows -> `Claude`
-- Terminal tools (yazi, zoxide, atuin) -> respective hubs
+## Duplicate Check
 
-Always include `Development` hub for technical content.
+Before creating any note, search for existing ones:
+```bash
+/Applications/Obsidian.app/Contents/MacOS/obsidian search query="<title keywords>" vault=LavaBrain
+```
+If a relevant note exists, offer to update it instead of creating a duplicate.
 
 ## Actions
 
@@ -72,23 +76,19 @@ Always include `Development` hub for technical content.
 Analyze a codebase and create an architecture overview.
 
 **Process:**
-1. Ensure the repo is on latest main before scanning:
-   - Run `git status` to check for uncommitted changes or if not on main
-   - If there are local changes or the branch is not main, **warn the user and stop**. Do not discard changes.
-   - If clean and on main (or can switch), run `git fetch origin main && git reset --hard origin/main` to get latest
-   - If clean but on a different branch, ask the user before switching
+1. Check repo state with `git status` — if there are local changes or the branch is not main, warn and stop. Do not modify the repo.
 2. Read README if present
-3. List directory structure (`ls -la`, check key dirs)
+3. List directory structure, check key dirs
 4. Identify tech stack from package files (go.mod, package.json, Cargo.toml, etc.)
-5. Check git history for context (`git log --oneline -10`)
-6. Identify main components and entry points
+5. Check git history: `git log --oneline -10`
+6. Capture current SHA: `git rev-parse --short HEAD`
 
 **Output structure:**
 ```markdown
 # <Repo Name> Architecture Overview
 
 ## Purpose
-What the repo does (from README or inferred)
+What the repo does
 
 ## Tech Stack
 - Language and version
@@ -96,24 +96,41 @@ What the repo does (from README or inferred)
 - Notable dependencies
 
 ## Architecture
-How main components connect (text description or ASCII diagram)
+How main components connect
 
 ## Key Components
-- `dir/` - Purpose of this directory
-- `file` - What this key file does
+- `dir/` - Purpose
+- `file` - What it does
 
 ## Configuration
-How the app is configured (env vars, config files, etc.)
+Env vars, config files
 
 ## Entry Points
 Where execution starts, main APIs or interfaces
 
 ## Related
-Links to other repos, docs, or vault notes if relevant
+Links to other repos, docs, or vault notes
 ```
+
+Include `scanned_at` (short SHA) and `scanned_path` (repo path) in frontmatter.
 
 ### add "<content>"
 Save a concept, insight, or general note.
+
+**Format:**
+```markdown
+# <Title>
+
+## Overview
+What this concept is and why it matters
+
+## Key Points
+- Point one
+- Point two
+
+## Related
+Links or cross-references
+```
 
 **Tags:** `[concept, <domain-tags>]`
 
@@ -160,7 +177,6 @@ Brief description of what this procedure accomplishes
 ## Steps
 1. First step
 2. Second step
-3. Continue...
 
 ## Verification
 How to confirm it worked
@@ -171,6 +187,41 @@ Common issues and fixes (if relevant)
 
 **Tags:** `[procedure, <domain-tags>]`
 
+### update "<note-name>"
+Append content to an existing note.
+
+1. Search for the note:
+   ```bash
+   /Applications/Obsidian.app/Contents/MacOS/obsidian search query="<note-name>" vault=LavaBrain
+   ```
+2. Read the existing file to understand current content
+3. Ask what to add
+4. Append using the CLI:
+   ```bash
+   /Applications/Obsidian.app/Contents/MacOS/obsidian append path=<path> content="\n<new content>" vault=LavaBrain
+   ```
+5. Open the note:
+   ```bash
+   /Applications/Obsidian.app/Contents/MacOS/obsidian open path=<path> vault=LavaBrain
+   ```
+
+### research "<topic>"
+Delegate to the `topic-researcher` agent to gather structured knowledge on a topic, then save the result.
+
+1. Hand off to the `topic-researcher` agent with the topic
+2. Take the returned markdown content
+3. Save as a new note in `01-Inbox/` following the standard format
+4. Open the note
+
+**Tags:** `[concept, research, <domain-tags>]`
+
+## Opening Notes
+
+After writing any file with the Write tool, always open it:
+```bash
+/Applications/Obsidian.app/Contents/MacOS/obsidian open path=01-Inbox/<filename>.md vault=LavaBrain
+```
+
 ## Trigger Modes
 
 ### Explicit Invocation
@@ -180,10 +231,10 @@ User runs `/obsidian <action>` with arguments.
 User says "add this to obsidian" or "save this to my vault" mid-session.
 
 **Identify "this" from context:**
-- Just explained a command? -> Save as command
-- Just analyzed architecture? -> Save as document
-- Just solved a problem? -> Save as procedure
-- Just explained a concept? -> Save as concept
+- Just explained a command? → Save as command
+- Just analyzed architecture? → Save as document
+- Just solved a problem? → Save as procedure
+- Just explained a concept? → Save as concept
 
 ### Proactive Suggestions
 After doing something reusable, offer: "Want me to add this to your vault?"
@@ -200,6 +251,10 @@ After doing something reusable, offer: "Want me to add this to your vault?"
 - Basic git operations
 - Trivial file changes
 
+## Vault Organization
+
+This command captures new content. For reorganizing existing notes, moving files between PARA folders, or fixing metadata across the vault, use the `obsidian-vault-organizer` agent instead.
+
 ## Content Type Tags
 
 | Type | Tag Pattern |
@@ -208,21 +263,13 @@ After doing something reusable, offer: "Want me to add this to your vault?"
 | Commands | `[command, tool-name]` |
 | Procedures | `[procedure, domain-tags]` |
 | Concepts | `[concept, domain-tags]` |
-
-## Example Invocations
-
-```
-/obsidian document ~/code/work/eth2-metrics
-/obsidian add "KES rotation requires incrementing the op_cert_counter"
-/obsidian command "kubectl debug pod/mypod -it --image=busybox --target=container"
-/obsidian procedure "Rotating KES keys for Cardano pools"
-```
+| Research | `[concept, research, domain-tags]` |
 
 ## Confirmation
 
 After writing a note, confirm with:
 ```
-Added to vault: 01-Inbox/2026-02-04_<filename>.md
+Added to vault: 01-Inbox/<filename>.md
 Hubs: [Hub1, Hub2]
 Tags: [tag1, tag2]
 ```

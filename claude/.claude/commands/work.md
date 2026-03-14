@@ -1,6 +1,6 @@
 ---
 description: Bootstrap ticket workspace with Obsidian context and git worktrees
-allowed-tools: Bash(test:*), Bash(mkdir:*), Bash(jira:*), Bash(git:*), Bash(mv:*), Bash(ls:*), Bash(fzf:*), Bash(gh:*), Write(~/Documents/LavaBrain/**), Read(~/Documents/LavaBrain/**)
+allowed-tools: Bash(test:*), Bash(mkdir:*), Bash(jira:*), Bash(git:*), Bash(mv:*), Bash(ls:*), Bash(fzf:*), Bash(gh:*), Bash(/Applications/Obsidian.app/Contents/MacOS/obsidian:*), Write(~/Documents/LavaBrain/**), Read(~/Documents/LavaBrain/**)
 arguments:
   - name: ticket_id
     description: Jira ticket ID (e.g., PROJ-1234)
@@ -62,7 +62,12 @@ test -d ~/Documents/LavaBrain/02-Projects/Work/Tickets/$ARGUMENTS.ticket_id && e
 
 7. Update `_context.md` repos list with each selected repo.
 
-8. Navigate to workspace:
+8. Open `_context.md` in Obsidian:
+   ```bash
+   /Applications/Obsidian.app/Contents/MacOS/obsidian open path=02-Projects/Work/Tickets/$ARGUMENTS.ticket_id/_context.md vault=LavaBrain
+   ```
+
+9. Navigate to workspace:
    - Single repo selected: `cd ~/code/tickets/$ARGUMENTS.ticket_id/<repo>`
    - Multiple repos selected: `cd ~/code/tickets/$ARGUMENTS.ticket_id/`
 
@@ -80,9 +85,14 @@ test -d ~/Documents/LavaBrain/02-Projects/Work/Tickets/$ARGUMENTS.ticket_id && e
 
 4. Show git status for each repo: current branch, uncommitted changes, ahead/behind origin.
 
-5. Ask what to work on.
+5. Open `_context.md` in Obsidian:
+   ```bash
+   /Applications/Obsidian.app/Contents/MacOS/obsidian open path=02-Projects/Work/Tickets/$ARGUMENTS.ticket_id/_context.md vault=LavaBrain
+   ```
 
-6. Navigate to workspace:
+6. Ask what to work on.
+
+7. Navigate to workspace:
    - Single repo in `_context.md`: `cd ~/code/tickets/$ARGUMENTS.ticket_id/<repo>`
    - Multiple repos: `cd ~/code/tickets/$ARGUMENTS.ticket_id/`
 
