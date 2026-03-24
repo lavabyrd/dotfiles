@@ -1,6 +1,6 @@
 ---
 description: Add content to Obsidian vault with proper PARA categorization and hub linking. Use for documenting codebases, saving commands, capturing concepts, or preserving useful knowledge from conversations.
-allowed-tools: Read, Glob, Write(~/Documents/LavaBrain/**), Edit(~/Documents/LavaBrain/**), Bash(git:*), Bash(ls:*), Bash(/Applications/Obsidian.app/Contents/MacOS/obsidian:*)
+allowed-tools: Read, Glob, Write(~/Documents/Lavakrew/**), Edit(~/Documents/Lavakrew/**), Bash(git:*), Bash(ls:*), Bash(/Applications/Obsidian.app/Contents/MacOS/obsidian:*)
 arguments:
   - name: action
     description: "Action to perform: document <path>, add <content>, command <cmd>, procedure <title>, update <note-name>, research <topic>. If omitted, asks what to add."
@@ -13,7 +13,7 @@ arguments:
 
 All vault interactions use the Obsidian CLI:
 ```
-/Applications/Obsidian.app/Contents/MacOS/obsidian <command> vault=LavaBrain
+/Applications/Obsidian.app/Contents/MacOS/obsidian <command> vault=Lavakrew
 ```
 
 For file creation: write content with the Write tool first, then open with the CLI. This avoids content escaping issues for large notes.
@@ -52,13 +52,13 @@ scanned_path: <repo-path>
 This enables "what changed since last scan" queries by comparing git history.
 
 ### Destination
-All new content goes to: `~/Documents/LavaBrain/01-Inbox/`
+All new content goes to: `~/Documents/Lavakrew/00-Inbox/`
 
 ## Hub Auto-Detection
 
 Read the live hub list before creating any note:
 ```bash
-ls ~/Documents/LavaBrain/04-Resources/Hubs/
+ls ~/Documents/Lavakrew/03-Resources/Hubs/
 ```
 Match content to relevant hub names from what's actually there. Always include `Development` for technical content.
 
@@ -66,7 +66,7 @@ Match content to relevant hub names from what's actually there. Always include `
 
 Before creating any note, search for existing ones:
 ```bash
-/Applications/Obsidian.app/Contents/MacOS/obsidian search query="<title keywords>" vault=LavaBrain
+/Applications/Obsidian.app/Contents/MacOS/obsidian search query="<title keywords>" vault=Lavakrew
 ```
 If a relevant note exists, offer to update it instead of creating a duplicate.
 
@@ -192,17 +192,17 @@ Append content to an existing note.
 
 1. Search for the note:
    ```bash
-   /Applications/Obsidian.app/Contents/MacOS/obsidian search query="<note-name>" vault=LavaBrain
+   /Applications/Obsidian.app/Contents/MacOS/obsidian search query="<note-name>" vault=Lavakrew
    ```
 2. Read the existing file to understand current content
 3. Ask what to add
 4. Append using the CLI:
    ```bash
-   /Applications/Obsidian.app/Contents/MacOS/obsidian append path=<path> content="\n<new content>" vault=LavaBrain
+   /Applications/Obsidian.app/Contents/MacOS/obsidian append path=<path> content="\n<new content>" vault=Lavakrew
    ```
 5. Open the note:
    ```bash
-   /Applications/Obsidian.app/Contents/MacOS/obsidian open path=<path> vault=LavaBrain
+   /Applications/Obsidian.app/Contents/MacOS/obsidian open path=<path> vault=Lavakrew
    ```
 
 ### research "<topic>"
@@ -210,7 +210,7 @@ Delegate to the `topic-researcher` agent to gather structured knowledge on a top
 
 1. Hand off to the `topic-researcher` agent with the topic
 2. Take the returned markdown content
-3. Save as a new note in `01-Inbox/` following the standard format
+3. Save as a new note in `00-Inbox/` following the standard format
 4. Open the note
 
 **Tags:** `[concept, research, <domain-tags>]`
@@ -219,7 +219,7 @@ Delegate to the `topic-researcher` agent to gather structured knowledge on a top
 
 After writing any file with the Write tool, always open it:
 ```bash
-/Applications/Obsidian.app/Contents/MacOS/obsidian open path=01-Inbox/<filename>.md vault=LavaBrain
+/Applications/Obsidian.app/Contents/MacOS/obsidian open path=00-Inbox/<filename>.md vault=Lavakrew
 ```
 
 ## Trigger Modes
@@ -269,7 +269,7 @@ This command captures new content. For reorganizing existing notes, moving files
 
 After writing a note, confirm with:
 ```
-Added to vault: 01-Inbox/<filename>.md
+Added to vault: 00-Inbox/<filename>.md
 Hubs: [Hub1, Hub2]
 Tags: [tag1, tag2]
 ```

@@ -1,6 +1,6 @@
 ---
 description: Bootstrap ticket workspace with Obsidian context and git worktrees
-allowed-tools: Bash(test:*), Bash(mkdir:*), Bash(jira:*), Bash(git:*), Bash(mv:*), Bash(ls:*), Bash(fzf:*), Bash(gh:*), Bash(/Applications/Obsidian.app/Contents/MacOS/obsidian:*), Write(~/Documents/LavaBrain/**), Read(~/Documents/LavaBrain/**)
+allowed-tools: Bash(test:*), Bash(mkdir:*), Bash(jira:*), Bash(git:*), Bash(mv:*), Bash(ls:*), Bash(fzf:*), Bash(gh:*), Bash(/Applications/Obsidian.app/Contents/MacOS/obsidian:*), Write(~/Documents/Lavakrew/**), Read(~/Documents/Lavakrew/**)
 arguments:
   - name: ticket_id
     description: Jira ticket ID (e.g., PROJ-1234)
@@ -13,7 +13,7 @@ Bootstrap a work session for ticket **$ARGUMENTS.ticket_id**.
 
 ## Key Paths
 
-- **Obsidian context**: `~/Documents/LavaBrain/02-Projects/Work/Tickets/$ARGUMENTS.ticket_id/`
+- **Obsidian context**: `~/Documents/Lavakrew/02-Areas/Work/Figment/Tickets/$ARGUMENTS.ticket_id/`
 - **Code worktrees**: `~/code/tickets/$ARGUMENTS.ticket_id/`
 - **Source repos**: `~/code/work/`
 
@@ -22,14 +22,14 @@ Bootstrap a work session for ticket **$ARGUMENTS.ticket_id**.
 ### Step 1: Check if ticket exists
 
 ```bash
-test -d ~/Documents/LavaBrain/02-Projects/Work/Tickets/$ARGUMENTS.ticket_id && echo "RETURNING" || echo "NEW"
+test -d ~/Documents/Lavakrew/02-Areas/Work/Figment/Tickets/$ARGUMENTS.ticket_id && echo "RETURNING" || echo "NEW"
 ```
 
 ### Step 2a: NEW TICKET setup
 
 1. Create Obsidian folder:
    ```bash
-   mkdir -p ~/Documents/LavaBrain/02-Projects/Work/Tickets/$ARGUMENTS.ticket_id
+   mkdir -p ~/Documents/Lavakrew/02-Areas/Work/Figment/Tickets/$ARGUMENTS.ticket_id
    ```
 
 2. Fetch Jira info:
@@ -64,7 +64,7 @@ test -d ~/Documents/LavaBrain/02-Projects/Work/Tickets/$ARGUMENTS.ticket_id && e
 
 8. Open `_context.md` in Obsidian:
    ```bash
-   /Applications/Obsidian.app/Contents/MacOS/obsidian open path=02-Projects/Work/Tickets/$ARGUMENTS.ticket_id/_context.md vault=LavaBrain
+   /Applications/Obsidian.app/Contents/MacOS/obsidian open path=02-Areas/Work/Figment/Tickets/$ARGUMENTS.ticket_id/_context.md vault=Lavakrew
    ```
 
 9. Navigate to workspace:
@@ -87,7 +87,7 @@ test -d ~/Documents/LavaBrain/02-Projects/Work/Tickets/$ARGUMENTS.ticket_id && e
 
 5. Open `_context.md` in Obsidian:
    ```bash
-   /Applications/Obsidian.app/Contents/MacOS/obsidian open path=02-Projects/Work/Tickets/$ARGUMENTS.ticket_id/_context.md vault=LavaBrain
+   /Applications/Obsidian.app/Contents/MacOS/obsidian open path=02-Areas/Work/Figment/Tickets/$ARGUMENTS.ticket_id/_context.md vault=Lavakrew
    ```
 
 6. Ask what to work on.
@@ -113,7 +113,7 @@ If user says "add repo":
 
 ## Rules
 
-1. **Never move or archive** - completed ticket folders stay in `02-Projects/Work/Tickets/` permanently
+1. **Never move or archive** - completed ticket folders stay in `02-Areas/Work/Figment/Tickets/` permanently
 2. **No AI co-author** - never add Co-authored-by trailers for Claude
 3. **Branch convention**: `mp/<ticket-lowercase>/<description>`
 4. **Always fetch** before creating worktrees

@@ -260,12 +260,40 @@ if [[ "$SETUP_STOW" == true ]]; then
     print_status "Setting up Claude configuration..."
     mkdir -p "$HOME/.claude"
 
-    for item in settings.json CLAUDE.md commands agents; do
+    for item in settings.json CLAUDE.md commands agents skills; do
       if [[ -e "$CLAUDE_SRC/$item" ]]; then
         if ln -sf "$CLAUDE_SRC/$item" "$HOME/.claude/$item"; then
           print_success "Linked Claude $item"
         else
           print_warning "Failed to link Claude $item"
+        fi
+      fi
+    done
+  fi
+
+  # Setup Lavakrew vault symlinks
+  LAVAKREW_SRC="$(pwd)/lavakrew"
+  LAVAKREW_VAULT="$HOME/Documents/Lavakrew"
+  if [[ -d "$LAVAKREW_SRC" ]]; then
+    print_status "Setting up Lavakrew vault configuration..."
+    mkdir -p "$LAVAKREW_VAULT/.claude"
+
+    for item in CLAUDE.md; do
+      if [[ -e "$LAVAKREW_SRC/$item" ]]; then
+        if ln -sf "$LAVAKREW_SRC/$item" "$LAVAKREW_VAULT/$item"; then
+          print_success "Linked Lavakrew $item"
+        else
+          print_warning "Failed to link Lavakrew $item"
+        fi
+      fi
+    done
+
+    for item in agents references skills; do
+      if [[ -e "$LAVAKREW_SRC/.claude/$item" ]]; then
+        if ln -sf "$LAVAKREW_SRC/.claude/$item" "$LAVAKREW_VAULT/.claude/$item"; then
+          print_success "Linked Lavakrew .claude/$item"
+        else
+          print_warning "Failed to link Lavakrew .claude/$item"
         fi
       fi
     done

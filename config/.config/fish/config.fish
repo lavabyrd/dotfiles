@@ -37,7 +37,7 @@ set -gx SSH_AUTH_SOCK "$HOME/Library/Containers/com.bitwarden.desktop/Data/.bitw
 alias j z
 alias cdold "builtin cd"
 alias cd z
-alias tn ticket-new
+alias krew "cd ~/documents/Lavakrew/ && claude"
 
 # Config Management Aliases
 alias fr "source ~/.config/fish/config.fish"
@@ -165,3 +165,5 @@ end
 if test -f ~/.config/fish/work_config.fish
     source ~/.config/fish/work_config.fish
 end
+
+fish_add_path -a "/Users/markpreston/.config/.foundry/bin"
