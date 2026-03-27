@@ -52,7 +52,14 @@ scanned_path: <repo-path>
 This enables "what changed since last scan" queries by comparing git history.
 
 ### Destination
-All new content goes to: `~/Documents/Lavakrew/00-Inbox/`
+
+**Ticket-related content**: If the content is associated with an active Jira ticket (e.g. generated during a `/work` session), write it directly to the ticket folder:
+```
+~/Documents/Lavakrew/02-Areas/Work/Figment/Tickets/<TICKET-ID>/
+```
+Use a descriptive filename without a date prefix (e.g. `upgrade-review.md`, `architecture-notes.md`).
+
+**Everything else**: `~/Documents/Lavakrew/00-Inbox/`
 
 ## Hub Auto-Detection
 

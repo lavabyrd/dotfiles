@@ -37,7 +37,7 @@ set -gx SSH_AUTH_SOCK "$HOME/Library/Containers/com.bitwarden.desktop/Data/.bitw
 alias j z
 alias cdold "builtin cd"
 alias cd z
-alias krew "cd ~/documents/Lavakrew/ && claude"
+alias krew "cd ~/documents/Lavakrew/ && claude --resume lavakrew"
 
 # Config Management Aliases
 alias fr "source ~/.config/fish/config.fish"
@@ -57,6 +57,17 @@ alias gundo "git reset HEAD~;"
 alias gst "git status"
 alias gg lazygit
 alias gmp "git checkout main && git pull"
+
+function dots
+    set -l dotdir ~/dotfiles
+    set -l msg (test (count $argv) -gt 0; and echo $argv; or echo "dotfiles update")
+    git -C $dotdir add -A
+    if not git -C $dotdir diff --cached --quiet
+        git -C $dotdir commit -m $msg
+    end
+    git -C $dotdir pull --rebase
+    git -C $dotdir push
+end
 
 function git
     /usr/bin/git $argv

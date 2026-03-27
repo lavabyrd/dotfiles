@@ -17,6 +17,10 @@
     "additionalDirectories": [],
     "bashCommandPatterns": []
   },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline-command.sh"
+  },
   "enabledPlugins": {
     "commit-commands@claude-plugins-official": true,
     "atlassian@claude-plugins-official": true,
@@ -27,11 +31,8 @@
     "mermaid-diagrams@sg2-ai-marketplace": true,
     "skill-creator@claude-plugins-official": true
   },
+  "autoDreamEnabled": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754066227391
-  },
-  "statusLine": {
-    "type": "command",
-    "command": "~/.claude/statusline-command.sh"
   }
 }
