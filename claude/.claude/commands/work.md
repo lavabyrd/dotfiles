@@ -1,6 +1,6 @@
 ---
 description: Bootstrap ticket workspace with Obsidian context and git worktrees
-allowed-tools: Bash(test:*), Bash(mkdir:*), Bash(jira:*), Bash(git:*), Bash(mv:*), Bash(ls:*), Bash(fzf:*), Bash(gh:*), Bash(/Applications/Obsidian.app/Contents/MacOS/obsidian:*), Write(~/Documents/Lavakrew/**), Read(~/Documents/Lavakrew/**)
+allowed-tools: Bash(test:*), Bash(mkdir:*), Bash(jira:*), Bash(git:*), Bash(mv:*), Bash(ls:*), Bash(fzf:*), Bash(gh:*), Bash(find:*), Bash(/Applications/Obsidian.app/Contents/MacOS/obsidian:*), Write(~/Documents/Lavakrew/**), Read(~/Documents/Lavakrew/**)
 arguments:
   - name: ticket_id
     description: Jira ticket ID (e.g., PROJ-1234)
@@ -13,7 +13,7 @@ Bootstrap a work session for ticket **$ARGUMENTS.ticket_id**.
 
 ## Key Paths
 
-- **Obsidian context**: `~/Documents/Lavakrew/02-Areas/Work/Figment/Tickets/$ARGUMENTS.ticket_id/`
+- **Obsidian context**: `~/Documents/Lavakrew/02-Areas/Work/Figment/Tickets/{Active|Done}/$ARGUMENTS.ticket_id/`
 - **Code worktrees**: `~/code/tickets/$ARGUMENTS.ticket_id/`
 - **Source repos**: `~/code/work/`
 
@@ -21,15 +21,19 @@ Bootstrap a work session for ticket **$ARGUMENTS.ticket_id**.
 
 ### Step 1: Check if ticket exists
 
+Tickets may live under `Active/` or `Done/` — use a glob to find them:
+
 ```bash
-test -d ~/Documents/Lavakrew/02-Areas/Work/Figment/Tickets/$ARGUMENTS.ticket_id && echo "RETURNING" || echo "NEW"
+find ~/Documents/Lavakrew/02-Areas/Work/Figment/Tickets -maxdepth 2 -type d -name "$ARGUMENTS.ticket_id" | head -1
 ```
+
+If the find returns a path, it's a RETURNING ticket — store that path as `TICKET_PATH`. Otherwise it's NEW.
 
 ### Step 2a: NEW TICKET setup
 
-1. Create Obsidian folder:
+1. Create Obsidian folder under `Active/`:
    ```bash
-   mkdir -p ~/Documents/Lavakrew/02-Areas/Work/Figment/Tickets/$ARGUMENTS.ticket_id
+   mkdir -p ~/Documents/Lavakrew/02-Areas/Work/Figment/Tickets/Active/$ARGUMENTS.ticket_id
    ```
 
 2. Fetch Jira info:
@@ -37,7 +41,7 @@ test -d ~/Documents/Lavakrew/02-Areas/Work/Figment/Tickets/$ARGUMENTS.ticket_id 
    jira issue view $ARGUMENTS.ticket_id --plain
    ```
 
-3. Create `_context.md` with YAML frontmatter:
+3. Create `_context.md` at `~/Documents/Lavakrew/02-Areas/Work/Figment/Tickets/Active/$ARGUMENTS.ticket_id/_context.md` with YAML frontmatter:
    ```yaml
    ticket: $ARGUMENTS.ticket_id
    jira: <URL from jira output>
@@ -64,7 +68,7 @@ test -d ~/Documents/Lavakrew/02-Areas/Work/Figment/Tickets/$ARGUMENTS.ticket_id 
 
 8. Open `_context.md` in Obsidian:
    ```bash
-   /Applications/Obsidian.app/Contents/MacOS/obsidian open path=02-Areas/Work/Figment/Tickets/$ARGUMENTS.ticket_id/_context.md vault=Lavakrew
+   /Applications/Obsidian.app/Contents/MacOS/obsidian open path=02-Areas/Work/Figment/Tickets/Active/$ARGUMENTS.ticket_id/_context.md vault=Lavakrew
    ```
 
 9. Navigate to workspace:
@@ -73,7 +77,9 @@ test -d ~/Documents/Lavakrew/02-Areas/Work/Figment/Tickets/$ARGUMENTS.ticket_id 
 
 ### Step 2b: RETURNING to ticket
 
-1. Read `_context.md` to load context.
+Use `TICKET_PATH` from Step 1 for all file operations. Derive the relative vault path by stripping `~/Documents/Lavakrew/` for Obsidian open calls.
+
+1. Read `$TICKET_PATH/_context.md` to load context.
 
 2. Verify worktrees exist — offer to recreate any that are missing.
 
@@ -85,9 +91,9 @@ test -d ~/Documents/Lavakrew/02-Areas/Work/Figment/Tickets/$ARGUMENTS.ticket_id 
 
 4. Show git status for each repo: current branch, uncommitted changes, ahead/behind origin.
 
-5. Open `_context.md` in Obsidian:
+5. Open `_context.md` in Obsidian using the resolved path:
    ```bash
-   /Applications/Obsidian.app/Contents/MacOS/obsidian open path=02-Areas/Work/Figment/Tickets/$ARGUMENTS.ticket_id/_context.md vault=Lavakrew
+   /Applications/Obsidian.app/Contents/MacOS/obsidian open path=<relative-vault-path-from-TICKET_PATH>/_context.md vault=Lavakrew
    ```
 
 6. Ask what to work on.
@@ -99,7 +105,12 @@ test -d ~/Documents/Lavakrew/02-Areas/Work/Figment/Tickets/$ARGUMENTS.ticket_id 
 ## Special Commands
 
 If user says "done" or "mark complete":
-- Update `_context.md` status to `completed` and bump `updated` timestamp.
+- Update `_context.md` status to `done` and bump `updated` timestamp.
+- Move the ticket folder from `Active/` to `Done/`:
+  ```bash
+  mv ~/Documents/Lavakrew/02-Areas/Work/Figment/Tickets/Active/$ARGUMENTS.ticket_id \
+     ~/Documents/Lavakrew/02-Areas/Work/Figment/Tickets/Done/$ARGUMENTS.ticket_id
+  ```
 - For each repo listed in `_context.md`, remove the worktree:
   ```bash
   git -C ~/code/work/<repo> worktree remove ~/code/tickets/$ARGUMENTS.ticket_id/<repo>
@@ -113,7 +124,7 @@ If user says "add repo":
 
 ## Rules
 
-1. **Never move or archive** - completed ticket folders stay in `02-Areas/Work/Figment/Tickets/` permanently
+1. **Active/Done split** - new tickets go into `Active/`; marking complete moves them to `Done/`
 2. **No AI co-author** - never add Co-authored-by trailers for Claude
 3. **Branch convention**: `mp/<ticket-lowercase>/<description>`
 4. **Always fetch** before creating worktrees

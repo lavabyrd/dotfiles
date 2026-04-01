@@ -37,7 +37,7 @@ set -gx SSH_AUTH_SOCK "$HOME/Library/Containers/com.bitwarden.desktop/Data/.bitw
 alias j z
 alias cdold "builtin cd"
 alias cd z
-alias krew "cd ~/documents/Lavakrew/ && claude --resume lavakrew"
+alias krew "cd ~/documents/Lavakrew/ && claude"
 
 # Config Management Aliases
 alias fr "source ~/.config/fish/config.fish"
