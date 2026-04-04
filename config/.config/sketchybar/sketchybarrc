@@ -31,25 +31,7 @@ sketchybar --default \
     background.corner_radius=4 \
     background.height=22
 
-############## EVENTS ##############
-sketchybar --add event aerospace_workspace_change
-
 ############## ITEMS ##############
-
-# Workspace indicators
-for ws in 1 2 3 4 5 6; do
-    sketchybar --add item "space.$ws" left \
-        --set "space.$ws" \
-            label="$ws" \
-            label.font="JetBrains Mono:Bold:12.0" \
-            label.color="$OVERLAY_COLOR" \
-            padding_left=4 \
-            padding_right=4 \
-            update_freq=10 \
-            click_script="aerospace workspace $ws" \
-            script="$PLUGIN_DIR/aerospace.sh" \
-        --subscribe "space.$ws" aerospace_workspace_change
-done
 
 # Discord badge (left)
 sketchybar --add item discord left \
@@ -84,20 +66,36 @@ sketchybar --add item telegram left \
         script="$PLUGIN_DIR/telegram.sh" \
     --subscribe telegram system_woke
 
-# Spotify (left)
-sketchybar --add item spotify left \
-    --set spotify \
-        drawing=off \
-        icon="$ICON_SPOTIFY" \
-        icon.color="$GREEN" \
-        update_freq=5 \
-        script="$PLUGIN_DIR/spotify.sh"
+# Notification badge bracket
+sketchybar --add bracket notifications discord slack telegram \
+    --set notifications \
+        background.color="$BAR_BORDER_COLOR" \
+        background.corner_radius=4 \
+        background.height=28 \
+        background.drawing=on
 
-# Battery (right)
-sketchybar --add item battery right \
-    --set battery \
-        update_freq=60 \
-        script="$PLUGIN_DIR/battery.sh"
+# Now Playing (left) - any media source
+sketchybar --add item nowplaying left \
+    --set nowplaying \
+        drawing=off \
+        update_freq=5 \
+        script="$PLUGIN_DIR/nowplaying.sh"
+
+# Now Playing progress bar (left)
+sketchybar --add item nowplaying_progress left \
+    --set nowplaying_progress \
+        drawing=off \
+        label.font="JetBrains Mono:Regular:8.0" \
+        label.color="$ACCENT_COLOR" \
+        padding_left=0 \
+        padding_right=4
+
+# Clock (right) - far left of right group
+sketchybar --add item clock right \
+    --set clock \
+        icon="$ICON_CLOCK" \
+        update_freq=10 \
+        script="$PLUGIN_DIR/time.sh"
 
 # Date (right)
 sketchybar --add item date right \
@@ -106,12 +104,34 @@ sketchybar --add item date right \
         update_freq=60 \
         script="$PLUGIN_DIR/time.sh"
 
-# Clock (right)
-sketchybar --add item clock right \
-    --set clock \
-        icon="$ICON_CLOCK" \
-        update_freq=10 \
-        script="$PLUGIN_DIR/time.sh"
+# Battery (right)
+sketchybar --add item battery right \
+    --set battery \
+        update_freq=60 \
+        script="$PLUGIN_DIR/battery.sh"
+
+# Weather (right)
+sketchybar --add item weather right \
+    --set weather \
+        drawing=off \
+        update_freq=1800 \
+        script="$PLUGIN_DIR/weather.sh"
+
+# CPU + RAM (right)
+sketchybar --add item cpu right \
+    --set cpu \
+        icon="$ICON_CPU" \
+        update_freq=5 \
+        script="$PLUGIN_DIR/cpu.sh"
+
+# Media indicator - mic/camera in use (right)
+sketchybar --add item media_indicator right \
+    --set media_indicator \
+        drawing=off \
+        icon="$ICON_MIC" \
+        icon.color="$RED" \
+        update_freq=5 \
+        script="$PLUGIN_DIR/media_indicator.sh"
 
 ############## FINALISE ##############
 sketchybar --update

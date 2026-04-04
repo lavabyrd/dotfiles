@@ -31,6 +31,7 @@
     "mermaid-diagrams@sg2-ai-marketplace": true,
     "skill-creator@claude-plugins-official": true
   },
+  "autoUpdatesChannel": "stable",
   "autoDreamEnabled": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754066227391

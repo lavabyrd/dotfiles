@@ -1,4 +1,7 @@
 #!/bin/sh
+ICON_CPU="󰻠"
+ICON_MIC="󰖂"
+ICON_CAMERA="󰄀"
 ICON_WIFI="󰤨"
 ICON_WIFI_OFF="󰤭"
 ICON_BATTERY_FULL="󰁹"

@@ -46,6 +46,8 @@ alias tc "nvim ~/.config/tmux/tmux.conf"
 alias tr "tmux source-file ~/.config/tmux/tmux.conf"
 alias ar "aerospace reload-config"
 alias ac "nvim ~/.config/aerospace/aerospace.toml"
+alias sr "sketchybar --reload"
+alias sc "nvim ~/.config/sketchybar/sketchybarrc"
 
 # File System Aliases
 alias ls "eza --all --all --long --header --git --icons"

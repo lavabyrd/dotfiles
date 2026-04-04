@@ -25,6 +25,7 @@ brew "poppler"        # PDF rendering library
 brew "kubectx"        # Kubernetes context switcher
 brew "gemini-cli"     # Gemini AI CLI
 brew "sketchybar"        # Custom macOS menu bar
+brew "nowplaying-cli"    # Query macOS NowPlaying API for any media source
 brew "tmux"              # Terminal multiplexer
 
 # Cask Applications
