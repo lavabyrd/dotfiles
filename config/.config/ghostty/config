@@ -47,3 +47,4 @@ shell-integration-features = cursor
 # Misc
 copy-on-select = clipboard
 confirm-close-surface = false
+macos-option-as-alt = left
