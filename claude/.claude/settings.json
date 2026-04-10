@@ -5,6 +5,10 @@
     "pr": ""
   },
   "permissions": {
+    "allow": [
+      "Bash(gh pr review*)",
+      "Bash(gh pr merge*)"
+    ],
     "deny": [
       "Bash(kubectl*exec*)",
       "Read(./.env)",
