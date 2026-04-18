@@ -97,3 +97,8 @@ run = 'layout floating'
 [[on-window-detected]]
 if.app-id = 'ru.keepcoder.Telegram'
 run = 'layout floating'
+
+# Floating: Plex
+[[on-window-detected]]
+if.app-id = 'tv.plex.desktop'
+run = 'layout floating'
