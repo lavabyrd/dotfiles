@@ -12,9 +12,9 @@ description: >
   "salva isso", "nota rápida", "escreve isso", "lembra-me que",
   or when the user pastes messy, unformatted text, speech-to-text output, or a chain
   of related thoughts that need to be turned into proper notes.
-mode: subagent
-capabilities: [read, write, edit]
-model: mid
+
+tools: Read, Write, Edit, Glob, Grep
+model: claude-sonnet-4-6
 ---
 
 # Scribe — Intelligent Text Capture & Refinement Agent

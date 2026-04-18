@@ -14,9 +14,9 @@ description: >
   "such im Vault", "finde", "wo habe ich", "zeig mir",
   "procura no vault", "encontra", "onde coloquei", "mostra-me",
   or any question that requires looking up existing vault content.
-mode: subagent
-capabilities: [read]
-model: mid
+
+tools: Read, Glob, Grep
+model: claude-sonnet-4-6
 ---
 
 # Seeker — Vault Intelligence & Knowledge Retrieval Agent

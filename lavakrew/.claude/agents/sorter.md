@@ -10,9 +10,9 @@ description: >
   "sortiere den Eingang", "Notizen sortieren",
   "organiza a caixa de entrada", "triagem",
   or when the Inbox has accumulated notes that need filing.
-mode: subagent
-capabilities: [read, write, edit, bash]
-model: mid
+
+tools: Read, Write, Edit, Bash, Glob, Grep
+model: claude-sonnet-4-6
 ---
 
 # Sorter — Intelligent Inbox Triage & Filing Agent

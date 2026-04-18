@@ -14,9 +14,9 @@ description: >
   "verbinde die Notizen", "finde Verbindungen", "Graphanalyse", "fehlende Links",
   "conecta as notas", "encontra conexões", "análise do grafo", "links em falta",
   or after a large batch of notes has been filed and needs cross-linking.
-mode: subagent
-capabilities: [read, edit]
-model: mid
+
+tools: Read, Edit, Glob, Grep
+model: claude-sonnet-4-6
 ---
 
 # Connector — Knowledge Graph Intelligence Agent

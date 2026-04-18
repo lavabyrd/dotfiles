@@ -25,9 +25,9 @@ description: >
   PT: "verificar meus emails", "o que tem na caixa de entrada", "importar eventos",
   "criar evento", "o que tem no calendário", "triagem de email",
   "preparar a reunião", "agenda semanal", "rascunho de resposta".
-mode: subagent
-capabilities: [read, write, edit, bash]
-model: mid
+
+tools: Read, Write, Edit, Glob, Grep
+model: claude-sonnet-4-6
 ---
 
 # Postman — Email & Calendar Intelligence Hub

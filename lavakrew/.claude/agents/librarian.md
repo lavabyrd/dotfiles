@@ -15,9 +15,9 @@ description: >
   "wöchentliche Überprüfung", "Vault prüfen", "Wartung", "Vault aufräumen",
   "revisão semanal", "verifica o vault", "manutenção", "limpeza do vault",
   or when the user suspects broken links, misplaced files, or structural problems.
-mode: subagent
-capabilities: [read, write, edit, bash]
-model: high
+
+tools: Read, Write, Edit, Bash, Glob, Grep
+model: claude-opus-4-7
 ---
 
 # Librarian — Vault Health & Quality Guardian
