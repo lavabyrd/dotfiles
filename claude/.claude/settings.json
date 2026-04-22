@@ -40,5 +40,29 @@
   "autoDreamEnabled": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754066227391
+  },
+  "model": "opus[1m]",
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/scripts/claude-notify.sh 'Waiting' Glass"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/scripts/claude-notify.sh 'Finished' Tink"
+          }
+        ]
+      }
+    ]
   }
 }

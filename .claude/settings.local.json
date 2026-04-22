@@ -14,7 +14,14 @@
       "Bash(brew services:*)",
       "Bash(brew:*)",
       "Bash(tmux:*)",
-      "Skill(commit-commands:commit)"
+      "Skill(commit-commands:commit)",
+      "Bash(rm /Users/markpreston/.claude/skills/find-skills /Users/markpreston/.claude/skills/review-dockerfiles-prs /Users/markpreston/.claude/skills/skill-judge /Users/markpreston/.claude/scripts/claude-notify.sh)",
+      "Bash(rmdir /Users/markpreston/.claude/scripts/)",
+      "Bash(stow claude *)",
+      "Bash(sketchybar --reload)",
+      "Bash(sketchybar *)",
+      "Bash(SENDER=claude_notification INFO=\"[test] test message\" /Users/markpreston/.config/sketchybar/plugins/claude_notify.sh)",
+      "Bash(echo \"exit: $?\")"
     ]
   }
 }

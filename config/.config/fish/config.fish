@@ -1,6 +1,10 @@
 if status is-interactive
     if not set -q TMUX
-        exec tmux new-session -A -s main
+        if tmux has-session 2>/dev/null
+            exec tmux attach-session -t (tmux list-sessions -F '#S' | head -1)
+        else
+            exec tmux new-session
+        end
     end
 end
 

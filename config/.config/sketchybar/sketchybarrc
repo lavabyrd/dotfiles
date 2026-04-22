@@ -74,6 +74,18 @@ sketchybar --add bracket notifications discord slack telegram \
         background.height=28 \
         background.drawing=on
 
+# Claude Code notifications (left)
+sketchybar --add event claude_notification
+sketchybar --add item claude_notify left \
+    --set claude_notify \
+        drawing=off \
+        icon="󰚿" \
+        icon.color="$ACCENT_COLOR" \
+        label.color="$LABEL_COLOR" \
+        update_freq=5 \
+        script="$PLUGIN_DIR/claude_notify.sh" \
+    --subscribe claude_notify claude_notification
+
 # Now Playing (left) - any media source
 sketchybar --add item nowplaying left \
     --set nowplaying \
