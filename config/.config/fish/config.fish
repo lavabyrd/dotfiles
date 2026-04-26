@@ -75,10 +75,16 @@ function dots
     end
     git -C $dotdir pull --rebase
     git -C $dotdir push
-    for pkg in (ls -1 $dotdir)
-        if test -d $dotdir/$pkg
-            stow -R -d $dotdir -t ~ $pkg
+    for link in ~/.claude/*
+        if test -L $link
+            set target (readlink $link)
+            if string match -q "$dotdir/*" $target
+                rm $link
+            end
         end
+    end
+    for pkg_path in $dotdir/*/
+        stow --no-folding -R -d $dotdir -t ~ (basename $pkg_path)
     end
 end
 
