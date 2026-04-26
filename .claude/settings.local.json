@@ -23,7 +23,12 @@
       "Bash(SENDER=claude_notification INFO=\"[test] test message\" /Users/markpreston/.config/sketchybar/plugins/claude_notify.sh)",
       "Bash(echo \"exit: $?\")",
       "Bash(ssh *)",
-      "Bash(stow *)"
+      "Bash(stow *)",
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:docs.immich.app)",
+      "WebFetch(domain:blog.jamisonkissh.com)",
+      "WebFetch(domain:developers.cloudflare.com)"
     ]
   }
 }
