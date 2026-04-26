@@ -32,9 +32,11 @@ set -gx PATH $HOME/.local/bin $PATH
 set -U fish_user_paths $fish_user_paths "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/"
 
 # Tool Initialization
-zoxide init fish | source
-eval "$(atuin init fish)"
-source ~/.orbstack/shell/init2.fish 2>/dev/null || :
+if status is-interactive
+    zoxide init fish | source
+    eval "$(atuin init fish)"
+    source ~/.orbstack/shell/init2.fish 2>/dev/null || :
+end
 
 # Bitwarden SSH Agent
 set -gx SSH_AUTH_SOCK "$HOME/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock"
@@ -69,6 +71,7 @@ alias gmp "git checkout main && git pull"
 function dots
     set -l dotdir ~/dotfiles
     set -l msg (test (count $argv) -gt 0; and echo $argv; or echo "dotfiles update")
+    set -l mac_only_pkgs aerospace ghostty sketchybar
     git -C $dotdir add -A
     if not git -C $dotdir diff --cached --quiet
         git -C $dotdir commit -m $msg
@@ -84,7 +87,10 @@ function dots
         end
     end
     for pkg_path in $dotdir/*/
-        stow --no-folding -R -d $dotdir -t ~ (basename $pkg_path)
+        set -l pkg (basename $pkg_path)
+        if test (uname) = Darwin; or not contains $pkg $mac_only_pkgs
+            stow --no-folding -R -d $dotdir -t ~ $pkg
+        end
     end
 end
 

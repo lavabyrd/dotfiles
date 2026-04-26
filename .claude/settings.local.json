@@ -22,7 +22,8 @@
       "Bash(sketchybar *)",
       "Bash(SENDER=claude_notification INFO=\"[test] test message\" /Users/markpreston/.config/sketchybar/plugins/claude_notify.sh)",
       "Bash(echo \"exit: $?\")",
-      "Bash(ssh *)"
+      "Bash(ssh *)",
+      "Bash(stow *)"
     ]
   }
 }
