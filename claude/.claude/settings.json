@@ -21,27 +21,6 @@
     "additionalDirectories": [],
     "bashCommandPatterns": []
   },
-  "statusLine": {
-    "type": "command",
-    "command": "~/.claude/statusline-command.sh"
-  },
-  "enabledPlugins": {
-    "commit-commands@claude-plugins-official": true,
-    "atlassian@claude-plugins-official": true,
-    "claude-code-setup@claude-plugins-official": true,
-    "claude-md-management@claude-plugins-official": true,
-    "gopls-lsp@claude-plugins-official": true,
-    "superpowers@claude-plugins-official": true,
-    "mermaid-diagrams@sg2-ai-marketplace": true,
-    "skill-creator@claude-plugins-official": true
-  },
-  "effortLevel": "medium",
-  "autoUpdatesChannel": "latest",
-  "autoDreamEnabled": true,
-  "feedbackSurveyState": {
-    "lastShownTime": 1754066227391
-  },
-  "model": "opus[1m]",
   "hooks": {
     "Notification": [
       {
@@ -64,5 +43,25 @@
         ]
       }
     ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline-command.sh"
+  },
+  "enabledPlugins": {
+    "commit-commands@claude-plugins-official": true,
+    "atlassian@claude-plugins-official": true,
+    "claude-code-setup@claude-plugins-official": true,
+    "claude-md-management@claude-plugins-official": true,
+    "gopls-lsp@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": true,
+    "mermaid-diagrams@sg2-ai-marketplace": true,
+    "skill-creator@claude-plugins-official": true
+  },
+  "effortLevel": "medium",
+  "autoUpdatesChannel": "latest",
+  "autoDreamEnabled": true,
+  "feedbackSurveyState": {
+    "lastShownTime": 1754066227391
   }
 }
