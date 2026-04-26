@@ -75,6 +75,11 @@ function dots
     end
     git -C $dotdir pull --rebase
     git -C $dotdir push
+    for pkg in (ls -1 $dotdir)
+        if test -d $dotdir/$pkg
+            stow -R -d $dotdir -t ~ $pkg
+        end
+    end
 end
 
 function git
